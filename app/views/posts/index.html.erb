@@ -2,7 +2,7 @@
 <p>Find me in app/views/posts/index.html.erb</p>
 <% @posts.each do |post| %>
 <div>
-  <%= image_tag post.get_image(100,100) %>
+  <%= image_tag post.images[0], size:'120x120' %>
   <p>投稿ユーザー画像：<%= image_tag 'default-image.jpg' %></p>
   <p>家具名：<%= post.furniture_name %></p>
   <p>説明：<%= post.caption %></p>

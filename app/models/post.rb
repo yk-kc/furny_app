@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  belongs_to :category
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
@@ -11,11 +12,11 @@ class Post < ApplicationRecord
 
 
   def get_image(width, height)
-      unless image.attached?
+      unless images.attached?
         file_path = Rails.root.join("app/assets/images/default-image.jpg")
-        image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
+        images.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
       end
-      image.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
+      images.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
   end
 
   private

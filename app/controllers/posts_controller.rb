@@ -33,11 +33,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:success] = "削除しました"
+    redirect_to posts_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:furniture_name, :caption, images: []) # 複数画像なので配列で受け取る
+    params.require(:post).permit(:furniture_name, :caption, :category_id, images: []) # 複数画像なので配列で受け取る
   end
 end
