@@ -9,6 +9,15 @@ class Post < ApplicationRecord
   validates :furniture_name, presence: true
   validates :caption, presence: true, length: { maximum: 2000 }
 
+
+  def get_image(width, height)
+      unless image.attached?
+        file_path = Rails.root.join("app/assets/images/default-image.jpg")
+        image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
+      end
+      image.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
+  end
+
   private
 
   def image_presence
