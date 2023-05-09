@@ -62,8 +62,6 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
-    ancestry (4.3.3)
-      activerecord (>= 5.2.6)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -240,7 +238,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  ancestry
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
