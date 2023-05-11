@@ -12,3 +12,10 @@ User.create!(name:  "yu",
              password:  "111111",
              password_confirmation: "111111",
              admin: true)
+
+category_lists = ["ソファ", "チェア・椅子", "テーブル", "デスク", "収納家具", "キッチン収納・食器棚", "テレビボード", "ハンガーラック", "玄関収納・小物", "ライト・照明", "ベッド", "寝具・タオル", "ミラー・ドレッサー", "ラグ・カーペット", "クッション", "時計", "花器・プランター・グリーン", "オブジェ・アート", "食器・テーブルウェア", "雑貨・その他インテリア家具"]
+for i in category_lists do
+  Category.find_or_create_by!(
+    name: i
+  )
+end

@@ -1,42 +1,20 @@
-<h1>画像投稿フォーム</h1>
-  <%= form_with model: @post, local: true do |f| %>
+<div class="text-center w-48 bg-white shadow rounded px-2 py-3">
+  画像投稿フォーム
+</div>
+<%= form_with model: @post, local: true do |f| %>
   <div class="mb-3">
     <%= f.label :images, "画像", class: "font-semibold block p-1" %>
     <%= f.file_field :images, multiple: true, accept: "image/*" %>
   </div>
-  <div>
-    <% if @post.images.attached? %>
-      <% @post.images.each do |image| %>
-        <div class="image-box inline-flex mx-1 mb-5">
-          <div class="text-center">
-            <%= image_tag image.variant(resize: '300x300').processed %>
-            <a class="link cursor-pointer" data-action="click->images#deleteImage">削除</a>
-            <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
+  <div class="mb-3">
     <h4>家具の名前</h4>
       <%= f.text_field :furniture_name %>
     <h4>説明</h4>
       <%= f.text_area :caption %>
-      <div class="form-group">
-  <%= f.label :category_id, "カテゴリ" %>
-  <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: true }, { class: "form-control" } %>
-</div>
-    <%= f.submit '投稿', class: "shadow-lg bg-black shadow-black/50 text-white rounded px-2 py-1" %>
-  <% end %>
-
-<div class="font-sans bg-white h-screen flex flex-col w-full">
-  <div class="h-screen bg-gradient-to-r from-green-400 to-blue-500">
-    <div class="px-4 py-48">
-     <div class="relative w-full text-center">
-       <h1 class="pulsing-text">
-        Your TailwindCSS setup is working if this pulses...
-       </h1>
-    </div>
-   </div>
   </div>
-</div>
+  <div class="form-group">
+    <%= f.label :category_id, "カテゴリ" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: true }, { class: "form-control" } %>
+  </div>
+    <%= f.submit '投稿', class: "shadow-lg bg-black shadow-black/50 text-white rounded px-2 py-1" %>
+<% end %>
