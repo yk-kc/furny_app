@@ -4,6 +4,8 @@
 
 @import "tailwindcss/utilities";
 
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
 .pulsing-text {
   @apply animate-pulse font-bold text-gray-200 text-2xl mb-6;
 }
