@@ -3,7 +3,7 @@
 <% @posts.each do |post| %>
 <div>
   <%= image_tag post.images[0], size:'120x120' %>
-  <p>投稿ユーザー画像：<%= image_tag 'default-image.jpg' %></p>
+  <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image(60,60) %></p>
   <p>家具名：<%= post.furniture_name %></p>
   <p>説明：<%= post.caption %></p>
   <p>ユーザーネーム：<%= post.user.name %></p>
