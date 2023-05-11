@@ -2,7 +2,6 @@
   <% @post.get_image(500,500).each do |image| %>
     <%= image_tag image %>
   <% end %>
-  <%#= imageimage_tag @post.get_image(100,100) %>
   <p>ショップ名：<%= @post.furniture_name %></p>
   <p>説明：<%= @post.caption %></p>
   <p>投稿ユーザー画像：<%= image_tag @post.user.get_profile_image(100,100) %></p>

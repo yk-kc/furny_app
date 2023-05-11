@@ -16,12 +16,7 @@ class Post < ApplicationRecord
   end
 
   def get_image(width, height)
-      # unless images.attached?
-      #   file_path = Rails.root.join("app/assets/images/default-image.jpg")
-      #   images.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
-      # end
-
-      images.map do |image|
+      images.map do |image| # 複数あるimageをひとつずつ取り出してサイズ適用できるようにする
         image.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
       end
   end
