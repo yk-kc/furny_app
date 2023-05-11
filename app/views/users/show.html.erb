@@ -2,7 +2,7 @@
 <p>Find me in app/views/users/show.html.erb</p>
 <div>
   <h3><%= @user.name %></h3>
-  <h3>@<%= @user.username %></h3>
+  <h3><%= @user.username %></h3>
   <%= image_tag @user.get_profile_image(60,60) %>
   <% if @user.name != "guestuser" %>
     <% if @user == current_user || current_user.admin? %>

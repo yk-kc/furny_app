@@ -6,7 +6,7 @@
   <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image(60,60) %></p>
   <p>家具名：<%= post.furniture_name %></p>
   <p>説明：<%= post.caption %></p>
-  <p><%= post.user.name %>  @<%= post.user.username %></p>
+  <p><%= post.user.name %>  <%= post.user.username %></p>
   <p><%= render 'favorites/btn', post: post %></p>
   <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
 </div>
