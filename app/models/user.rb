@@ -20,9 +20,10 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name, length: { minimum: 1, maximum: 20 }
+  validates :name, presence: true, length: { maximum: 20 }
   validates :username, uniqueness: true,
-      length: { minimum: 6, maximum: 20 }
+      length: { minimum: 6, maximum: 20 },
+      format: { with: /[a-z\d]{6,}/i, message: "は半角英数字を6文字以上含む必要があります" }
 
   # ゲストログイン機能
   def self.guest
