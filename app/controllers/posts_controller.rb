@@ -6,8 +6,12 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      flash[:notice] = "投稿が作成されました"
+      redirect_to posts_path
+    else
+      render :new
+    end
   end
 
   def index
