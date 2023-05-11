@@ -1,16 +1,32 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
 <h1>画像投稿フォーム</h1>
   <%= form_with model: @post, local: true do |f| %>
-    <h4>画像</h4>
-      <%= f.file_field :images, multiple: true, direct_upload: true, required: true, accept: "image/*" %>
+  <div class="mb-3">
+    <%= f.label :images, "画像", class: "font-semibold block p-1" %>
+
+    <%= f.file_field :images, multiple: true, accept: "image/*" %>
+    <%= f.file_field :images, multiple: true, accept: "image/*" %>
+  </div>
+  <div>
+    <% if @post.images.attached? %>
+      <% @post.images.each do |image| %>
+        <div class="image-box inline-flex mx-1 mb-5">
+          <div class="text-center">
+            <%= image_tag image.variant(resize: '300x300').processed %>
+            <a class="link cursor-pointer" data-action="click->images#deleteImage">削除</a>
+            <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
     <h4>家具の名前</h4>
       <%= f.text_field :furniture_name %>
     <h4>説明</h4>
       <%= f.text_area :caption %>
       <div class="form-group">
-  <!--<%= f.label :category_id, "カテゴリ" %>-->
-  <!--<%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: true }, { class: "form-control" } %>-->
+  <%= f.label :category_id, "カテゴリ" %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: true }, { class: "form-control" } %>
 </div>
     <%= f.submit '投稿', class: "shadow-lg bg-black shadow-black/50 text-white rounded px-2 py-1" %>
   <% end %>

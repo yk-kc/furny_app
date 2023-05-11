@@ -15,13 +15,13 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  def get_image(width, height)
-      unless images.attached?
-        file_path = Rails.root.join("app/assets/images/default-image.jpg")
-        images.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
-      end
-      images.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
-  end
+  # def get_image(width, height)
+  #     unless images.attached?
+  #       file_path = Rails.root.join("app/assets/images/default-image.jpg")
+  #       images.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
+  #     end
+  #     images.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
+  # end
 
   private
 
