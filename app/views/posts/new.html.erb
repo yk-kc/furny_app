@@ -2,8 +2,6 @@
   <%= form_with model: @post, local: true do |f| %>
   <div class="mb-3">
     <%= f.label :images, "画像", class: "font-semibold block p-1" %>
-
-    <%= f.file_field :images, multiple: true, accept: "image/*" %>
     <%= f.file_field :images, multiple: true, accept: "image/*" %>
   </div>
   <div>
