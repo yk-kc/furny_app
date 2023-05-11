@@ -1,0 +1,13 @@
+<h1>管理者専用ページ</h1>
+
+<% if user_signed_in? %>
+   <% if current_user.admin? %>
+     <% sum = 0 %>
+       <% @users.each do |u| %>
+         <p>メアド:<%= u.email %></p>
+         <p>名前:<%= u.name %>さん</p>
+       <% sum += 1 %>
+       <% end %>
+     <p>登録者合計：<%= sum %></p>
+    <% end %>
+  <% end %>

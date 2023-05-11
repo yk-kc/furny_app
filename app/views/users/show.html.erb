@@ -5,7 +5,7 @@
   <h3>@<%= @user.username %></h3>
   <%= image_tag @user.get_profile_image(60,60) %>
   <% if @user.name != "guestuser" %>
-    <% if @user == current_user %>
+    <% if @user == current_user || current_user.admin? %>
       <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
     <% end %>
   <% end %>

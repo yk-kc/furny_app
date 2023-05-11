@@ -21,7 +21,7 @@
     <% end %>
     <%= post_comment.created_at.strftime('%Y/%m/%d') %><br>
     <%= post_comment.comment %>
-    <% if post_comment.user == current_user %>
+    <% if post_comment.user == current_user || current_user.admin? %>
       <%= link_to "Destroy", post_post_comment_path(@post, post_comment), method: :delete, class: "bg-red-600 hover:bg-red-500 text-white rounded px-4 py-1" %>
     <% end %>
   <% end %>
