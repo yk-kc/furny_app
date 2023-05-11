@@ -11,6 +11,7 @@
   <% if @post.user == current_user || current_user.admin? %>
     <%= link_to "削除", post_path(@post), method: :delete, class: "bg-red-600 hover:bg-red-500 text-white rounded px-4 py-1" %>
   <% end %>
+  <%= render 'favorites/btn', post: @post %>
 </div>
 
 <div>
