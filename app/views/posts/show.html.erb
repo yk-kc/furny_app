@@ -1,2 +1,34 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div>
+  <%= image_tag @post.images[0], size:'120x120' %>
+  <p>ショップ名：<%= @post.furniture_name %></p>
+  <p>説明：<%= @post.caption %></p>
+  <p>投稿ユーザー画像：<%= image_tag @post.user.get_profile_image(100,100) %></p>
+  <p>表示名：<%= @post.user.name %></p>
+  <p>username：@<%= @post.user.username %></p>
+  <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+  <% if @post.user == current_user %>
+    <%= link_to "削除", post_path(@post), method: :delete %>
+  <% end %>
+</div>
+
+<div>
+  <p>コメント件数：<%= @post.post_comments.count %></p>
+  <% @post.post_comments.each do |post_comment| %>
+    <%= link_to user_path(post_comment.user) do %>
+      <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+      <%= post_comment.user.name %>
+      @<%= post_comment.user.username %>
+    <% end %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %><br>
+    <%= post_comment.comment %>
+    <% if post_comment.user == current_user %>
+      <%= link_to "Destroy", post_post_comment_path(@post, post_comment), method: :delete, class: "bg-red-600 hover:bg-red-500 text-white rounded px-4 py-1" %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@post, @post_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
