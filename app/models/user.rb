@@ -24,6 +24,15 @@ class User < ApplicationRecord
   validates :username, uniqueness: true,
       length: { minimum: 6, maximum: 20 }
 
+  # ゲストログイン機能
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64 # ランダムな文字列を生成するRubyのメソッド
+      user.name = "guestuser"
+      user.username = "guestuser"
+    end
+  end
+
   def get_profile_image(width, height)
       unless profile_image.attached?
         file_path = Rails.root.join("app/assets/images/default-image.jpg")
