@@ -6,6 +6,12 @@
 
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&family=Zen+Kaku+Gothic+New&display=swap');
+
+header h1 {
+  font-family: 'Shippori Mincho B1', serif;
+}
+
 .pulsing-text {
   @apply animate-pulse font-bold text-gray-200 text-2xl mb-6;
 }
