@@ -3,9 +3,9 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <div class="font-gothic-new flex">
-    <p>アカウント登録がお済みでない方はこちら</p>
-    <%= link_to "Sign up", new_registration_path(resource_name), class: "rounded-md bg-emerald-400 px-2 py-1 text-lg font-medium text-white ring-1 ring-inset ring-green-600/20 hover:bg-emerald-300 ml-5" %><br />
+  <div class="font-gothic-new flex justify-center items-center mb-2">
+    <p>登録がまだの方はこちら</p>
+    <%= link_to "Sign up", new_registration_path(resource_name), class: "rounded-md bg-emerald-400 px-2 py-1 font-medium text-white ring-1 ring-inset ring-green-600/20 hover:bg-emerald-300 ml-5" %><br />
   </div>
 <% end %>
 

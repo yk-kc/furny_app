@@ -1,33 +1,36 @@
-<div class="relative">
-  <%= image_tag 'unsplash_top_image2.png' %>
-  <p class="font-shippori absolute inset-y-2/4 left-40 text-xl">暮らしの中に、インテリアで調和を。</p>
+<%= render 'layouts/sidebar' %>
+<div class="w-full pl-64">
+  <div class="relative">
+    <%= image_tag 'unsplash_top_image2.png', class: "bg-cover" %>
+    <p class="font-shippori absolute inset-y-2/4 left-40 text-xl">暮らしの中に、インテリアで調和を。</p>
+  </div>
+  <% if user_signed_in? %>
+    <li>
+    <%= link_to '投稿フォーム', new_post_path %>
+    </li>
+    <li>
+    <%= link_to 'マイページ', user_path(current_user.id) %>    </li>
+    <li>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </li>
+  <% else %>
+    <div class="my-10 border-b pb-28">
+      <span class="font-shippori text-4xl border-b border-black pb-2.5 ml-24">Furnyについて</span>
+      <div class="font-shippori text-xl mt-16 ml-24">
+        <p>　Funiture ＋ Harmony</p><br>
+        <p>インテリアは一つだけでは成り立たない。</p><br>
+        <p>多種多様のインテリアたちによって調和し、空間を、暮らしを作っていくものである。</p><br>
+        <p class="mt-16">Furnyは、そんなインテリア家具が好きな人のためのSNS。</p>
+      </div>
+    </div>
+    <div class="font-gothic-new flex text-lg mt-24 ml-48">
+      <P>アカウント登録はこちら</P>
+      <botton><%= link_to "Sign up", new_user_registration_path, class: "font-gothic-new rounded-md bg-transparent px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-green-600/20 hover:text-white hover:bg-emerald-400 ml-5" %></botton>
+    </div>
+    <div class="font-gothic-new flex text-lg mt-16 ml-48 mb-10">
+      <P>ゲストログイン(閲覧用)はこちら</P>
+      <botton><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "font-gothic-new rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-500/10 hover:text-white hover:bg-neutral-300 ml-5" %></botton>
+      <botton><%= link_to "ログイン", new_user_session_path, class: "font-gothic-new rounded-md bg-transparent px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-sky-500 hover:text-white hover:bg-sky-500 ml-5" %></botton>
+    </div>
+  <% end %>
 </div>
-<% if user_signed_in? %>
-      <li>
-      <%= link_to '投稿フォーム', new_post_path %>
-      </li>
-      <li>
-      <%= link_to 'マイページ', user_path(current_user.id) %>    </li>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <div class="my-10 border-b pb-28">
-        <span class="font-shippori text-4xl border-b border-black pb-2.5 ml-24">Furnyについて</span>
-        <div class="font-shippori text-xl mt-16 ml-24">
-          <p>　Funiture ＋ Harmony</p><br>
-          <p>インテリアは一つだけでは成り立たない。</p><br>
-          <p>多種多様のインテリアたちによって調和し、空間を、暮らしを作っていくものである。</p><br>
-          <p class="mt-16">Furnyは、そんなインテリア家具が好きな人のためのSNS。</p>
-        </div>
-      </div>
-      <div class="font-gothic-new flex text-lg mt-24 ml-48">
-        <P>アカウント登録はこちら</P>
-        <botton><%= link_to "Sign up", new_user_registration_path, class: "font-gothic-new rounded-md bg-transparent px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-green-600/20 hover:text-white hover:bg-emerald-400 ml-5" %></botton>
-      </div>
-      <div class="font-gothic-new flex text-lg mt-16 ml-48 mb-10">
-        <P>ゲストログイン(閲覧用)はこちら</P>
-        <botton><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "font-gothic-new rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-500/10 hover:text-white hover:bg-neutral-300 ml-5" %></botton>
-        <botton><%= link_to "ログイン", new_user_session_path, class: "font-gothic-new rounded-md bg-transparent px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-sky-500 hover:text-white hover:bg-sky-500 ml-5" %></botton>
-      </div>
-    <% end %>
