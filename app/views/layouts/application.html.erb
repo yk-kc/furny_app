@@ -14,8 +14,16 @@
   <body>
     <%= render 'layouts/header' %>
     <main>
-      <p><%= flash[:notice] %></p>
-      <%= yield %>
+      <div class="w-11/12 h-max flex border-x border-black mx-auto pb-16">
+        <%= render 'layouts/sidebar' %>
+        <div>
+          <div class="pl-64">
+            <p><%= flash[:notice] %></p>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
     </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

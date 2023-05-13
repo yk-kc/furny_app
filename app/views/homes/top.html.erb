@@ -1,5 +1,7 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="relative">
+  <%= image_tag 'unsplash_top_image.png' %>
+  <p class="font-shippori absolute inset-y-2/4 left-40 text-xl">暮らしの中に、インテリアで調和を。</p>
+</div>
 <% if user_signed_in? %>
       <li>
       <%= link_to '投稿フォーム', new_post_path %>
@@ -10,13 +12,22 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
-      <li>
-        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-      </li>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
+      <div class="my-10">
+        <span class="font-shippori text-4xl border-b border-black pb-2.5 ml-24">Furnyについて</span>
+        <div class="font-shippori text-xl mt-9 ml-24">
+          <p>　Funiture ＋ Harmony</p><br>
+          <p>インテリアは一つだけでは成り立たない。</p><br>
+          <p>多種多様のインテリアたちによって調和し、空間を、暮らしを作っていくものである。</p><br>
+          <p class="mt-9">Furnyは、そんなインテリア家具が好きな人のためのSNS。</p>
+        </div>
+      </div>
+      <div class="font-shippori flex text-xl mt-24 ml-48">
+        <P>アカウント登録はこちら</P>
+        <botton><%= link_to "登録", new_user_registration_path, class: "font-gothic-new text-lg bg-transparent hover:bg-green-400 text-black hover:text-white py-1 px-9 border-3 border-green-400 hover:border-transparent rounded-xl ml-5" %></botton>
+      </div>
+      <div class="font-shippori flex text-xl mt-16 ml-48">
+        <P>ゲストログイン(閲覧用)はこちら</P>
+        <botton><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "font-gothic-new text-lg bg-transparent hover:bg-neutral-300 text-black hover:text-white py-1 px-9 border-3 border-neutral-300 hover:border-transparent rounded-xl ml-5" %></botton>
         <%= link_to "ログイン", new_user_session_path %>
-      </li>
+      </div>
     <% end %>
