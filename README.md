@@ -30,7 +30,7 @@
 - OS：Windows11
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
-- JSライブラリ：React
+- CSSフレームワーク：TailwindCSS
 - IDE：Cloud9
 
 ## 使用素材
