@@ -1,5 +1,8 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <div class="font-gothic-new flex justify-center items-center mb-2">
+    <p>登録済みの方はこちら</p>
+    <%= link_to "Log in", new_session_path(resource_name), class: "rounded-md bg-sky-500 px-2 py-1 font-medium text-white ring-1 ring-inset ring-sky-500 hover:bg-sky-400 ml-5" %><br />
+  </div>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
