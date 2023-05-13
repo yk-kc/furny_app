@@ -7,6 +7,7 @@
     <%= f.label :images, "画像", class: "font-semibold block p-1" %>
     <%= f.file_field :images, multiple: true, accept: "image/*" %>
   </div>
+  <div id="new-image" class="w-96 object-cover"></div>
   <div class="mb-3">
     <h4>家具の名前</h4>
       <%= f.text_field :furniture_name %>
