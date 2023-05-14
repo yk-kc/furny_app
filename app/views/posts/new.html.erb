@@ -1,22 +1,30 @@
-<%= render 'layouts/errors', obj: @post %>
-<div class="text-center w-48 bg-white shadow rounded px-2 py-3">
-  画像投稿フォーム
+<%= render 'layouts/sidebar' %>
+
+<div class="w-full h-max flex justify-center">
+
+  <%= render 'layouts/errors', obj: @post %>
+
+  <div class="text-center font-gothic-new mt-10">
+  <h1 class="text-center w-48 bg-stone-200 rounded-xl px-2 py-3 mx-auto mb-5">画像投稿フォーム</h1>
+  <%= form_with model: @post, local: true do |f| %>
+    <div class="mb-3">
+      <p class="mb-1"><%= f.label :images, "画像", class: "font-semibold p-1" %> ( 5枚まで )</p>
+      <%= f.file_field :images, multiple: true, required: true, accept: "image/*" %>
+    </div>
+    <div id="new-image" class="flex justify-center"></div>
+    <div class="mb-3">
+      <%= f.label :furniture_name, "インテリア家具名", class: "font-semibold block p-1" %>
+        <%= f.text_field :furniture_name, required: true %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :caption, "説明", class: "font-semibold block p-1" %>
+        <%= f.text_area :caption %>
+    </div>
+    <div class="form-group">
+      <%= f.label :category_id, "カテゴリ", class: "font-semibold block p-1" %>
+      <%= f.collection_select :category_id, Category.all, :id, :name, { :include_blank => "選択してください ▼" }, :required => true %>
+    </div>
+      <botton><%= f.submit '投稿', class: "bg-gray-500 hover:bg-gray-400 text-white rounded-md px-8 py-2 mt-5" %></botton>
+  <% end %>
 </div>
-<%= form_with model: @post, local: true do |f| %>
-  <div class="mb-3">
-    <%= f.label :images, "画像", class: "font-semibold block p-1" %>
-    <%= f.file_field :images, multiple: true, accept: "image/*" %>
-  </div>
-  <div id="new-image" class="w-96 object-cover"></div>
-  <div class="mb-3">
-    <h4>家具の名前</h4>
-      <%= f.text_field :furniture_name, required: true %>
-    <h4>説明</h4>
-      <%= f.text_area :caption %>
-  </div>
-  <div class="form-group">
-    <%= f.label :category_id, "カテゴリ" %>
-    <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: true }, { class: "form-control" } %>
-  </div>
-    <%= f.submit '投稿', class: "shadow-lg bg-black shadow-black/50 text-white rounded px-2 py-1" %>
-<% end %>
+</div>

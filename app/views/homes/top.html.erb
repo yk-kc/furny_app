@@ -1,4 +1,5 @@
 <%= render 'layouts/sidebar' %>
+
 <div class="w-full pl-64">
   <div class="relative">
     <%= image_tag 'unsplash_top_image2.png', class: "bg-cover" %>
@@ -14,23 +15,7 @@
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     </li>
     <hr>
-    <% @feeds.each do |post| %>
-      <div>
-        <p>
-          <%= link_to post_path(post) do %>
-            <%= image_tag post.images[0], size: '120x120' %>
-            <%= post.furniture_name %>
-          <% end %>
-        <p><%= render 'favorites/btn', post: post %></p>
-        <p><%= render 'bookmarks/btn', post: post %></p>
-        </p>
-        <p><%= post.caption %></p>
-        <p>
-          <%= link_to user_path(post.user) do %>
-            <%= post.user.name %> <%= post.user.username %></p>
-          <% end %>
-      </div>
-    <% end %>
+    
   <% else %>
     <div class="my-10 border-b pb-28">
       <span class="font-shippori text-4xl border-b border-black pb-2.5 ml-24">Furnyについて</span>
