@@ -1,10 +1,6 @@
-<div>
-  <h1 class="font-bold text-4xl">Relationships#followings</h1>
-  <p>Find me in app/views/relationships/followings.html.erb</p>
-</div>
 <h2>Follow Users</h2>
 <% if @users.exists? %>
-  <%= render '/users/index', users: @users %>
+  <%= render 'users_index', users: @users %>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>
