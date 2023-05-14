@@ -1,6 +1,8 @@
 <%= render 'layouts/sidebar' %>
 
-<div class="w-full pl-64">
+<div class="w-64 shrink-0"></div>
+
+<div class="w-full">
   <div class="relative">
     <%= image_tag 'unsplash_top_image2.png', class: "bg-cover" %>
     <p class="font-shippori absolute inset-y-2/4 left-40 text-xl">暮らしの中に、インテリアで調和を。</p>
@@ -15,7 +17,7 @@
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     </li>
     <hr>
-    
+
   <% else %>
     <div class="my-10 border-b pb-28">
       <span class="font-shippori text-4xl border-b border-black pb-2.5 ml-24">Furnyについて</span>
