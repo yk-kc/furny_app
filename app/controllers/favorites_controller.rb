@@ -1,4 +1,10 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy]
+
+  def index
+    # ユーザーがいいねした投稿
+    @posts = Post.joins(:favorites).where(favorites: { user_id: params[:user_id] }) 
+  end
 
   def create
     post = Post.find(params[:post_id])

@@ -17,6 +17,9 @@
       <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
     <% end %>
   <% end %>
+  <p>
+    <%= link_to 'いいね一覧', user_favorites_path(@user) %>
+  </p>
 </div>
 
 <!-- ユーザーの投稿一覧 -->

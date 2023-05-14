@@ -1,0 +1,17 @@
+<% @posts.each do |post| %>
+      <div>
+        <p>
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.images[0], size: '120x120' %>
+            <%= post.furniture_name %>
+          <% end %>
+        <p><%= render 'favorites/btn', post: post %></p>
+        </p>
+        <p><%= post.caption %></p>
+        <p>
+          <%= link_to user_path(post.user) do %>
+            <%= post.user.name %> <%= post.user.username %></p>
+          <% end %>
+      </div>
+    <% end %>
+    
