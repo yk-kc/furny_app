@@ -9,12 +9,14 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     resources :favorites, only: [:index]
+    resources :bookmarks, only: [:index]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
 
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create , :destroy]
+    resource :bookmarks, only: [:create , :destroy]
     resources :post_comments, only: [:create , :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

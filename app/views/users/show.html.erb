@@ -19,6 +19,7 @@
   <% end %>
   <p>
     <%= link_to 'いいね一覧', user_favorites_path(@user) %>
+    <%= link_to 'Bookmark一覧', user_bookmarks_path(@user) %>
   </p>
 </div>
 
@@ -34,6 +35,7 @@
   <p>説明：<%= post.caption %></p>
   <p>ユーザーネーム：<%= post.user.name %></p>
   <p><%= render 'favorites/btn', post: post %></p>
+  <p><%= render 'bookmarks/btn', post: post %></p>
   <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
 </div>
 <% end %>

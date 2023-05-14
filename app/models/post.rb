@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :category
   has_many :favorites, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
   has_many_attached :images # 複数画像アップロード
@@ -10,9 +11,14 @@ class Post < ApplicationRecord
   validates :furniture_name, presence: true
   validates :caption, presence: true, length: { maximum: 2000 }
 
-
+  # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べる
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
+  end
+
+  # 引数で渡されたユーザidがbookmarksテーブル内に存在（exists?）するかどうかを調べる
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user.id).exists?
   end
 
   def get_image(width, height)
