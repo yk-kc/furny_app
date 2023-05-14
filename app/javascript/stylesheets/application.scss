@@ -23,3 +23,21 @@ main {
 .pulsing-text {
   @apply animate-pulse font-bold text-gray-200 text-2xl mb-6;
 }
+
+.show-image {
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+}
+#new-image{
+  display: flex;
+}
+.image-element{
+  width: 100px;
+  margin: 2px 2px;
+  display: flex;
+  img{
+    width: 100%;
+    object-fit: cover;
+  }
+}

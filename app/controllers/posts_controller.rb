@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  
   def new
     @post = Post.new
   end
@@ -49,4 +50,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:furniture_name, :caption, :category_id, images: []) # 複数画像なので配列で受け取る
   end
+  
 end

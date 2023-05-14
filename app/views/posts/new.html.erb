@@ -5,12 +5,12 @@
 <%= form_with model: @post, local: true do |f| %>
   <div class="mb-3">
     <%= f.label :images, "画像", class: "font-semibold block p-1" %>
-    <%= f.file_field :images, multiple: true, accept: "image/*" %>
+    <%= f.file_field :images, multiple: true %>
   </div>
   <div id="new-image" class="w-96 object-cover"></div>
   <div class="mb-3">
     <h4>家具の名前</h4>
-      <%= f.text_field :furniture_name %>
+      <%= f.text_field :furniture_name, required: true %>
     <h4>説明</h4>
       <%= f.text_area :caption %>
   </div>
