@@ -5,7 +5,7 @@
   <%= render 'layouts/errors', obj: @post %>
 
   <div class="text-center font-gothic-new mt-10">
-  <h1 class="text-center w-48 bg-stone-200 rounded-xl px-2 py-3 mx-auto mb-5">画像投稿フォーム</h1>
+  <h1 class="text-center w-48 bg-stone-200 px-8 py-3 mx-auto mb-5">画像投稿フォーム</h1>
   <%= form_with model: @post, local: true do |f| %>
     <div class="mb-3">
       <p class="mb-1"><%= f.label :images, "画像", class: "font-semibold p-1" %> ( 5枚まで )</p>
@@ -24,7 +24,7 @@
       <%= f.label :category_id, "カテゴリ", class: "font-semibold block p-1" %>
       <%= f.collection_select :category_id, Category.all, :id, :name, { :include_blank => "選択してください ▼" }, :required => true %>
     </div>
-      <botton><%= f.submit '投稿', class: "bg-gray-500 hover:bg-gray-400 text-white rounded-md px-8 py-2 mt-5" %></botton>
+      <botton><%= f.submit '投稿', class: "bg-gray-500 hover:bg-gray-400 text-white rounded-xl px-8 py-2 mt-5" %></botton>
   <% end %>
 </div>
 </div>
