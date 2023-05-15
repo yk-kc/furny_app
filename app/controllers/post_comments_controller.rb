@@ -1,17 +1,17 @@
 class PostCommentsController < ApplicationController
 
   def create
-    post = Post.find(params[:post_id])
+    @post = Post.find(params[:post_id])
     comment = current_user.post_comments.new(post_comment_params)
-    comment.post_id = post.id
+    comment.post_id = @post.id
     comment.save
-    post.create_notification_comment!(current_user, comment.id)
-    redirect_to request.referer
+    @post.create_notification_comment!(current_user, comment.id)
+    @post_comment = PostComment.new
   end
 
   def destroy
     PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    redirect_to request.referer
+    @post = Post.find(params[:post_id])
   end
 
   private

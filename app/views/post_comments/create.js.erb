@@ -1,0 +1,4 @@
+$('#new-comments').html("<%= j(render 'post_comments/index', post: @post) %>");
+
+$('#comments-area').html("<%= j(render 'post_comments/form', post: @post, post_comment: @post_comment) %>")
+$('textarea').val('');
