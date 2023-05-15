@@ -23,6 +23,11 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    respond_to do |format|
+      format.html
+      # link_toメソッドをremote: trueに設定したのでリクエストはjs形式で行われる
+      format.js
+    end
   end
 
   def edit

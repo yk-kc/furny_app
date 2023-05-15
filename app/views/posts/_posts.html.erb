@@ -1,0 +1,6 @@
+<% posts.each do |post| %>
+<!--写真をクリックしたときの実行アクション（showなのでphoto_path(photo.id)）とリクエスト形式（jsなのでremote: true） を指定-->
+  <%= link_to post_path(post.id), remote: true do %>
+    <%= image_tag post.images[0], class: "photo-img", id: "photo-img" %>
+　<% end %>
+<% end %>

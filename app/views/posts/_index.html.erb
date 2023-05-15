@@ -1,13 +1,13 @@
 <% posts.each do |post| %>
 
   <div class="w-80 h-[30rem] bg-[#EDEEE9] border border-black overflow-hidden mx-2.5 mt-5 shadow-lg">
-    
+
     <div class="w-80 h-80 border-b border-black">
-      <%= link_to post_path(post) do %>
+      <%= link_to post_path(post), remote: true do %>
         <%= image_tag post.images[0], class: "w-full h-full object-cover" %>
       <% end %>
     </div>
-    
+
     <div class="flex">
       <div id="favorites_buttons_<%= post.id %>" class="mt-3 ml-5">
         <%= render 'favorites/btn', post: post %>
@@ -21,17 +21,17 @@
         <%= render 'bookmarks/btn', post: post %>
       </div>
     </div>
-    
+
     <p class="text-center text-[28px] my-5">
       <%= post.furniture_name %>
     </p>
-    
+
     <p class="text-right mt-3 mr-5">
       <%= link_to user_path(post.user) do %>
         <%= post.user.name %> <%= post.user.username %>
       <% end %>
     </p>
-    
+
   </div>
-  
+
 <% end %>
