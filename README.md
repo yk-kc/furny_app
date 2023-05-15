@@ -35,5 +35,6 @@
 
 ## 使用素材
 - FontAwesome
+- Heroicons
 - Google Fonts
 - Figmaのプラグイン「Unsplash」 https://www.figma.com/community/plugin/738454987945972471/Unsplash

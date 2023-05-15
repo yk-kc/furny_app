@@ -4,7 +4,7 @@
   <div class="form-inline">
     <span>
       <%= link_to user_path(visitor) do %>
-        <%= image_tag avatar_url(visitor).to_s, class: "icon_mini" %>
+        <%#= image_tag avatar_url(visitor).to_s, class: "icon_mini" %>
         <strong><%= visitor.name %></strong>
       <% end %>
       さんが
@@ -28,7 +28,7 @@
           </span>
         <% end %>
         <p class="text-muted mb-0">
-          <%= PostComment.find_by(id: notification.post_comment_id)&.post_comment %>
+          <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
         </p>
     <% end %>
 
