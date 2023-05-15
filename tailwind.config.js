@@ -6,12 +6,14 @@ module.exports = {
     content: [
       './app/views/**/*.html.erb',
       './app/helpers/**/*.rb',
-      './app/javascript/**/*.js'
+      './app/javascript/**/*.js',
+      "./src/**/*.{html,js}",
+      "./node_modules/tw-elements/dist/js/**/*.js"
     ]
   },
   content: [],
   presets: [],
-  darkMode: 'media', // or 'class'
+  darkMode: 'class', // or 'media'
   theme: {
     accentColor: ({ theme }) => ({
       ...theme('colors'),
@@ -1003,6 +1005,7 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/aspect-ratio'),
+    require("tw-elements/dist/plugin.cjs")
   ]
 }
 
