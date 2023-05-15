@@ -60,3 +60,5 @@ gem 'devise'
 gem 'rmagick'
 
 gem 'rails-i18n'
+
+gem 'kaminari'
