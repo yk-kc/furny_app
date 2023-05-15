@@ -16,10 +16,6 @@
   font-family: 'Zen Kaku Gothic New', sans-serif;
 }
 
-main {
-  padding-top: 200px;
-}
-
 .side-box {
   width: 255px;
 }
@@ -68,7 +64,7 @@ main {
   transform: translate(0, 0) scale(1);
   transition: 0.2s;   /* transitionでアニメーションを作成 */
   z-index: 20;   /* マスクより上に重なるようにする */
-  max-width: 80%;   /* showビューの幅に合わせて設定 */
+  max-width: 75%;   /* showビューの幅に合わせて設定 */
   max-height: 90%;
   background-color: white;
 }
