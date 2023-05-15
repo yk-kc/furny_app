@@ -18,9 +18,9 @@
         <% end %>
       </div>
       <div class="flex">
-        <p class="mt-3 ml-5"><%= render 'favorites/btn', post: post %></p>
-        <p class="mt-3 ml-3"><%= render 'post_comments/btn', post: post %></p>
-        <p class="ml-auto mt-3 mr-5"><%= render 'bookmarks/btn', post: post %></p>
+        <div id="favorites_buttons_<%= post.id %>" class="mt-3 ml-5"><%= render 'favorites/btn', post: post %></div>
+        <div class="mt-3 ml-3"><%= render 'post_comments/btn', post: post %></div>
+        <div class="ml-auto mt-3 mr-5"><%= render 'bookmarks/btn', post: post %></div>
       </div>
       <p class="text-center text-[28px] my-5"><%= post.furniture_name %></p>
       <p class="text-right mt-3 mr-5">
