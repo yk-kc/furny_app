@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
-  var mySwiper = new Swiper('.swiper', {
+  var wiper = new Swiper('.swiper', {
     // Optional parameters
     loop: true,
 
