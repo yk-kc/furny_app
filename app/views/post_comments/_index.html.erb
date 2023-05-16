@@ -5,7 +5,7 @@
 
         <td>
           <%= link_to user_path(post_comment.user) do %>
-            <%= image_tag post_comment.user.get_profile_image(100,100) %><br>
+            <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-full mt-4 ml-[25px]" %><br>
             <%= post_comment.user.name %>
             <%= post_comment.user.username %>
           <% end %>

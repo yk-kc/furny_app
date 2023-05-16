@@ -16,14 +16,6 @@
   font-family: 'Zen Kaku Gothic New', sans-serif;
 }
 
-.side-box {
-  width: 255px;
-}
-
-.pulsing-text {
-  @apply animate-pulse font-bold text-gray-200 text-2xl mb-6;
-}
-
 .show-image {
   width: 500px;
   height: 500px;
@@ -64,7 +56,7 @@
   transform: translate(0, 0) scale(1);
   transition: 0.2s;   /* transitionでアニメーションを作成 */
   z-index: 20;   /* マスクより上に重なるようにする */
-  max-width: 75%;   /* showビューの幅に合わせて設定 */
+  max-width: 65%;   /* showビューの幅に合わせて設定 */
   max-height: 90%;
   background-color: white;
 }
@@ -81,8 +73,11 @@
   transform: translate(0, 0) scale(0.8);   /* 大きさ0.8倍から等倍にモーダルが拡大される */
 }
 
-.swiper {
-  width: 900px;
-  height: 900px;
-  object-fit: cover;
+.swiper-pagination-bullet {
+  background-color: gray;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+ display: none;
 }

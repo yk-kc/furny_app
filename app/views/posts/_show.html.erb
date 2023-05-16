@@ -1,26 +1,36 @@
-<div class="flex">
-  <!-- Slider main container -->
-  <div class="swiper">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper w-6/12 h-[750px]">
-      <!-- Slides -->
+<div class="flex justify-start h-[90vh]">
+  <% if post.images.length < 2 %>
+    <div class="h-full aspect-square border-r border-zinc-200">
       <% post.images.each do |image| %>
-        <%= image_tag image, class: "swiper-slide aspect-square w-full object-contain" %>
+        <%= image_tag image, class: "w-full h-full relative top-0 bottom-0 right-0 left-0 object-contain transition-transform"%>
       <% end %>
     </div>
-    <!-- pagination -->
-    <div class="swiper-pagination"></div>
+  <% else %>
+    <!-- Slider main container -->
+    <div class="swiper h-full aspect-square border-r border-zinc-200">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <% post.images.each do |image| %>
+          <%= image_tag image, class: "swiper-slide absolute top-0 bottom-0 right-0 left-0 object-contain" %>
+        <% end %>
+      </div>
+      <!-- pagination -->
+      <div class="swiper-pagination"></div>
 
-    <!-- navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-  </div>
+      <!-- navigation buttons -->
+      <%= image_tag 'botton-prev.png', class: "swiper-button-prev bg-[length:30px_30px] w-[30px] h-[30px]" %>
+      <%= image_tag 'botton-next.png', class: "swiper-button-next w-[30px] h-[30px]" %>
+      <!--<div class="swiper-button-prev"></div>-->
+      <!--<div class="swiper-button-next"></div>-->
+    </div>
+  <% end %>
 
-  <div>
-    <div class="flex">
-      <%= image_tag post.user.get_profile_image(65,65), class: "rounded-full mt-2.5" %>
-      <p>表示名：<%= post.user.name %></p>
-      <p>username：<%= post.user.username %></p>
+  <div class="w-[32.5%]">
+    <div class="flex items-end border-b border-zinc-200 pb-4">
+      <%= image_tag post.user.get_profile_image(65,65), class: "rounded-full mt-4 ml-[17px]" %>
+      <p class="text-[20px] font-semibold mx-4 mb-4"><%= post.user.name %></p>
+      <p class="text-neutral-500 mb-4"><%= post.user.username %></p>
     </div>
     <p>ショップ名：<%= post.furniture_name %></p>
     <p>説明：<%= post.caption %></p>
