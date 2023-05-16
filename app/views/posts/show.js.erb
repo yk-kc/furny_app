@@ -11,6 +11,7 @@ modal.innerHTML = '<%= escape_javascript(render partial: 'posts/show', locals: {
 modal.classList.remove('hidden');
 mask.classList.remove('hidden');
 
+
 <!--モーダルの外側（マスク）をクリックするとhiddenクラスが書き込まれ、モーダルとマスクが再び非表示となります。-->
 mask.addEventListener('click', () => {
   modal.classList.add('hidden');
