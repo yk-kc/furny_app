@@ -3,11 +3,11 @@
 <div class="w-64 shrink-0"></div>
 
 <div class="w-full h-max flex justify-center">
-  <div class="text-center font-gothic-new mt-10">
+  <div class="text-center font-gothic-new mt-8">
 
     <%= render 'layouts/errors', obj: @post %>
 
-    <h1 class="text-center w-48 bg-stone-200 px-8 py-3 mx-auto mb-5">画像投稿フォーム</h1>
+    <h1 class="text-center w-48 bg-stone-200 px-8 py-3 mx-auto mt-2 mb-5">画像投稿フォーム</h1>
     <%= form_with model: @post, local: true do |f| %>
 
     <div class="mb-3">
