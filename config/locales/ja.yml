@@ -7,7 +7,7 @@ ja:
         password: パスワード
         username: ユーザーネーム
       post:
-        furniture_name: 家具名
+        furniture_name: インテリア家具名
         caption: 説明
         images: 画像
         category_id: カテゴリー

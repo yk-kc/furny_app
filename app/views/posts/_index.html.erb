@@ -22,13 +22,14 @@
       </div>
     </div>
 
-    <p class="text-center text-[28px] my-5">
+    <p class="text-center text-[18px] font-medium my-7">
       <%= post.furniture_name %>
     </p>
 
     <p class="text-right mt-3 mr-5">
       <%= link_to user_path(post.user) do %>
-        <%= post.user.name %> <%= post.user.username %>
+        <span class="text-[17px] font-medium mr-3"><%= post.user.name %></span>
+        <span class="text-[15px] text-neutral-500"><%= post.user.username %></span>
       <% end %>
     </p>
 

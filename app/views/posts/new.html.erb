@@ -3,10 +3,10 @@
 <div class="w-64 shrink-0"></div>
 
 <div class="w-full h-max flex justify-center">
-
-  <%= render 'layouts/errors', obj: @post %>
-
   <div class="text-center font-gothic-new mt-10">
+
+    <%= render 'layouts/errors', obj: @post %>
+
     <h1 class="text-center w-48 bg-stone-200 px-8 py-3 mx-auto mb-5">画像投稿フォーム</h1>
     <%= form_with model: @post, local: true do |f| %>
 
@@ -30,10 +30,10 @@
 
     <div class="form-group">
       <%= f.label :category_id, "カテゴリ", class: "font-semibold block p-1" %>
-      <%= f.collection_select :category_id, Category.all, :id, :name, { :include_blank => "選択してください ▼" }, :required => true %>
+      <%= f.collection_select :category_id, Category.all, :id, :name, { :include_blank => "選択してください ▼" }, :required => true, class: "cursor-pointer" %>
     </div>
 
-    <botton><%= f.submit '投稿', class: "bg-gray-500 hover:bg-gray-400 text-white rounded-xl px-8 py-2 mt-5" %></botton>
+    <botton><%= f.submit '投稿', class: "bg-gray-500 hover:bg-gray-400 text-white rounded-xl px-8 py-2 mt-5 cursor-pointer" %></botton>
   <% end %>
   </div>
 </div>

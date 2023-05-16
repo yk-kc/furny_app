@@ -23,9 +23,9 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name, presence: true, length: { maximum: 20 }
+  validates :name, presence: true, length: { maximum: 10 }
   validates :username, uniqueness: true,
-      length: { minimum: 6, maximum: 20 },
+      length: { minimum: 6, maximum: 14 },
       format: { with: /[a-z\d]{6,}/i, message: "は半角英数字を6文字以上含む必要があります" }
 
   # usernameの頭に自動で「@」をつける
@@ -60,7 +60,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   def create_notification_follow!(current_user)
     # すでにフォローされているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])

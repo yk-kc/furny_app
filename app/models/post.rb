@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   FILE_NUMBER_LIMIT = 5
   validate :validate_number_of_files
 
-  validates :furniture_name, presence: true
+  validates :furniture_name, presence: true, length: { maximum: 17 }
   validates :caption, length: { maximum: 2000 }
 
   # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べる
