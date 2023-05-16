@@ -10,7 +10,6 @@ import "channels"
 import "stylesheets/application.scss"
 import '@fortawesome/fontawesome-free/js/all'
 import './preview'
-import './swiper'
 import 'jquery'
 
 Rails.start()
