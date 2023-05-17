@@ -2,7 +2,7 @@
 
 <div class="w-64 shrink-0"></div>
 
-<div class="h-screen">
+<div class="h-full">
   <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
       <%= render @notifications %>
