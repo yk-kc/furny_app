@@ -18,10 +18,10 @@ class PostsController < ApplicationController
       "ブラック": "#000000",
       "グレー": "#999595",
       "ホワイト": "#ffffff",
-      "アイボリー'": "#FFFBEE",
+      "アイボリー": "#FFFBEE",
       "クリア": "#F2F8FA",
       "ゴールド": "#D8CCAD",
-      "シルバー": "#D3D3D3"
+      "シルバー": "#D3D3D3",
     }
   end
 
