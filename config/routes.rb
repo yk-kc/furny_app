@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resource :bookmarks, only: [:create , :destroy]
     resources :post_comments, only: [:create , :destroy]
     get 'timeline'
+    collection do
+      get 'search'
+    end
   end
 
   resources :notifications, only: [:index]

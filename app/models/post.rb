@@ -81,6 +81,14 @@ class Post < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  def self.search(search)
+    if search != ""
+      Post.joins(:user).where('furniture_name LIKE(?) OR caption LIKE(?) OR user.name LIKE(?) OR user.username LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+    else
+      Post.all
+    end
+  end
+
   private
 
   def image_presence

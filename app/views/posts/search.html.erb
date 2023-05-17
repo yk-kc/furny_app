@@ -5,17 +5,10 @@
 <div class="font-gothic-new w-full h-full flex flex-wrap justify-center">
 
   <div class="w-full flex justify-center mt-10 mb-8">
-    <%= link_to "タイムライン", post_timeline_path(current_user), class: "tracking-[-.15em] mr-7 text-black" %>
-    |
-    <p class="tracking-[.2em] ml-8">view all</p>
+    <p>検索結果一覧</p>
   </div>
 
-  <div class="w-full text-center">
-    <%= form_with(url: search_posts_path, local: true, method: :get, class: "w-full") do |f| %>
-      <%= f.text_field :keyword, placeholder: "ユーザーを検索、投稿を検索", id: 'Search_Form', class: "w-[30vw] h-[30px] text-black rounded-[5px] border-[#008bbb]" %>
-      <%= f.submit "検索", class: "ml-3" %>
-    <% end %>
-  </div>
+  <%= render 'relationships/users_index', users: @users %>
 
   <%= render 'posts/index', posts: @posts %>
 

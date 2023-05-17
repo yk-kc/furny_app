@@ -39,6 +39,12 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order(created_at: :desc)
   end
+  
+  def search
+    @keyword = params[:keyword]
+    @posts = Post.search(params[:keyword]).order(created_at: :desc)
+    @users = User.search(params[:keyword]).order(created_at: :desc)
+  end
 
   def timeline
     @feeds = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
