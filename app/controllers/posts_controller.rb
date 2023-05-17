@@ -2,6 +2,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @color_map = {
+      "レッド": "#ffbcbc",
+      "ブルー": "#bcddff",
+      "ゴールド": "#ffead6"
+    }
   end
 
   def create
