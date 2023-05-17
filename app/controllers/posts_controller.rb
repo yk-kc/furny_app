@@ -39,11 +39,11 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order(created_at: :desc)
   end
-  
+
   def search
     @keyword = params[:keyword]
-    @posts = Post.search(params[:keyword]).order(created_at: :desc)
-    @users = User.search(params[:keyword]).order(created_at: :desc)
+    @posts = Post.search(@keyword).order(created_at: :desc)
+    @users = User.search(@keyword).order(created_at: :desc)
   end
 
   def timeline
