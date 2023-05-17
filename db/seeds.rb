@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(name:  "yu",
-             username: "yuu415",
+             username: "@yuu415",
              email: "yu415@gmail.com",
              password:  "111111",
              password_confirmation: "111111",
@@ -30,7 +30,7 @@ Tag.create([
   { name: 'パープル' },
   { name: 'ベージュ' },
   { name: 'ダークブラウン' },
-  { name: 'ウォールナットブラウン' },
+  { name: 'ウォールナット' },
   { name: 'ミディアムブラウン' },
   { name: 'ライトブラウン' },
   { name: 'ブラック' },
