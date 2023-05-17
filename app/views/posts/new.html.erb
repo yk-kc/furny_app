@@ -33,6 +33,25 @@
       <%= f.collection_select :category_id, Category.all, :id, :name, { :include_blank => "選択してください ▼" }, :required => true, class: "cursor-pointer" %>
     </div>
 
+    <div class='form-group'>
+      <%= f.label :tag, "カラー", class: "font-semibold inline-block p-1" %>
+      <span> (複数チェック可)</span>
+      <div class="flex flex-wrap w-[320px]">
+        <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, include_hidden: false do |tag| %>
+        <!--第一引数 :tag_idsはpostオブジェクトのプロパティ名-->
+        <!--第二引数 Tag.allはtagオブジェクトの配列を取得-->
+        <!--第三引数 :id　チェックボックスのvalue属性の値-->
+        <!--第四引数 :name チェックボックスのラベル名-->
+            <div class='form-check'>
+                <%= tag.label class: 'form-check-label' do %>
+                    <%= tag.check_box class: 'form-check-input' %>
+                    <%= tag.text %>
+                <% end %>
+            </div>
+        <% end %>
+        </div>
+    </div>
+
     <botton><%= f.submit '投稿', class: "bg-gray-500 hover:bg-gray-400 text-white rounded-xl px-8 py-2 mt-5 cursor-pointer" %></botton>
   <% end %>
   </div>

@@ -1,10 +1,16 @@
 class Post < ApplicationRecord
+
   belongs_to :user
   belongs_to :category
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
+
+  # postsテーブルから中間テーブルに対する関連付け
+  has_many :post_tag_relations, dependent: :destroy
+  # postsテーブルから中間テーブルを介してTagsテーブルへの関連付け
+  has_many :tags, through: :post_tag_relations, dependent: :destroy
 
   has_many_attached :images # 複数画像アップロード
   validate :image_presence # 必ず1枚の画像をアップロードする
@@ -13,6 +19,8 @@ class Post < ApplicationRecord
 
   validates :furniture_name, presence: true, length: { maximum: 17 }
   validates :caption, length: { maximum: 2000 }
+
+  validates :tag_ids, presence: true
 
   # 引数で渡されたユーザidがFavoritesテーブル内に存在（exists?）するかどうかを調べる
   def favorited_by?(user)

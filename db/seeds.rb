@@ -19,3 +19,25 @@ for i in category_lists do
     name: i
   )
 end
+
+Tag.create([
+  { name: 'レッド' },
+  { name: 'ブルー' },
+  { name: 'グリーン' },
+  { name: 'イエロー' },
+  { name: 'オレンジ' },
+  { name: 'ピンク' },
+  { name: 'パープル' },
+  { name: 'ベージュ' },
+  { name: 'ダークブラウン' },
+  { name: 'ウォールナットブラウン' },
+  { name: 'ミディアムブラウン' },
+  { name: 'ライトブラウン' },
+  { name: 'ブラック' },
+  { name: 'グレー' },
+  { name: 'ホワイト' },
+  { name: 'アイボリー' },
+  { name: 'クリア' },
+  { name: 'ゴールド' },
+  { name: 'シルバー' }
+])

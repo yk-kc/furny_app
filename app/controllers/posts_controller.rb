@@ -57,7 +57,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:furniture_name, :caption, :category_id, images: []) # 複数画像なので配列で受け取る
+    params.require(:post).permit(:furniture_name, :caption, :category_id, images: [], tag_ids: []) # 複数画像、複数タグなので配列で受け取る
   end
 
 end
