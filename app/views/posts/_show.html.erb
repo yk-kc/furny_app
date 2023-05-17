@@ -32,6 +32,11 @@
       <p class="text-[20px] font-semibold mx-4 mb-4"><%= post.user.name %></p>
       <p class="text-neutral-500 mb-4"><%= post.user.username %></p>
     </div>
+    <% post.tags.each do |tag| %>
+      <div class="balloon relative w-[30px] h-3 inline-block border border-zinc-300 mr-2 align-middle" style="background-color: <%= color_map[tag.name.to_sym] %>;">
+        <span class="tag-text absolute hidden p-[2px] bg-zinc-200 w-[95px] text-center text-[80%] left-[30%] bottom-[100%] mb-[12px] rounded-lg"><%= tag.name %></span>
+      </div>
+    <% end %>
     <p>ショップ名：<%= post.furniture_name %></p>
     <p>説明：<%= post.caption %></p>
     <p>投稿日時：<%= post.created_at.strftime('%Y/%m/%d') %></p>
