@@ -1,0 +1,22 @@
+<%= render 'layouts/sidebar' %>
+
+<div class="w-64 shrink-0"></div>
+
+<div class="font-gothic-new w-full h-max flex flex-wrap justify-center">
+
+  <div class="w-full flex justify-center mt-10 mb-8">
+    <p class="tracking-[-.15em] mr-7">タイムライン</p>
+    |
+    <p class="tracking-[.2em] ml-8">view all</p>
+  </div>
+
+  <%= render 'posts/index', posts: @feeds %>
+
+  <!--モーダルの周囲を薄暗くするマスク-->
+  <div id="mask" class="hidden"></div>
+  <!--モーダル-->
+  <!--あとからJavaScriptで<div>内のコードをshowビューのコードに置き換えます。-->
+  <div id="modal" class="hidden">
+    <p>モーダルウィンドウ<p>
+  </div>
+</div>
