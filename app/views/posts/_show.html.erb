@@ -38,8 +38,15 @@
     <% if post.user == current_user || current_user.admin? %>
     <%= link_to "削除", post_path(post), method: :delete, class: "bg-red-600 hover:bg-red-500 text-white rounded px-4 py-1" %>
     <% end %>
-    <%= render 'favorites/btn', post: post %>
-    <p><%= render 'bookmarks/btn', post: post %></p>
+
+    <div id="favorites_buttons_<%= post.id %>" class="mt-3 ml-5">
+      <%= render 'favorites/btn', post: post %>
+    </div>
+
+    <div id="bookmarks_buttons_<%= post.id %>" class="ml-auto mt-3 mr-5">
+      <%= render 'bookmarks/btn', post: post %>
+    </div>
+
     <p>コメント件数：<%= post.post_comments.count %></p>
     <div id="new-comments">
     <%= render 'post_comments/index', post: post %>
