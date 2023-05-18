@@ -73,7 +73,7 @@ class PostsController < ApplicationController
   end
 
   def tag_result
-    @posts = Post.all
+    @selected_color = params[:tag_ids].select {|k,v| v == "1"}.keys
     if params[:tag_ids]
       @posts = []
       params[:tag_ids].each do |key, value|
@@ -116,27 +116,6 @@ class PostsController < ApplicationController
       # link_toメソッドをremote: trueに設定したのでリクエストはjs形式で行われる
       format.js
     end
-    @color_map = {
-      "レッド": "#CC0D0D",
-      "ブルー": "#2F6DCB",
-      "グリーン": "#008000",
-      "イエロー": "#E7C724",
-      "オレンジ": "#CF7F08",
-      "ピンク": "#CF0867",
-      "パープル": "#3E1F98",
-      "ベージュ": "#C7AC8E",
-      "ダークブラウン": "#4B2B06",
-      "ウォールナットブラウン": "#7E4D14",
-      "ミディアムブラウン": "#B75A05",
-      "ライトブラウン": "#E0AC7B",
-      "ブラック": "#000000",
-      "グレー": "#999595",
-      "ホワイト": "#ffffff",
-      "アイボリー": "#FFFBEE",
-      "クリア": "#F2F8FA",
-      "ゴールド": "#D8CCAD",
-      "シルバー": "#D3D3D3",
-    }
   end
 
   def edit
