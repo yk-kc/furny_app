@@ -27,7 +27,8 @@
       %>
     <% end %>
 
-    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+    <%#= form_tag({controller:"posts",action:"tag_result"}, method: :get) do %>
+    <%= form_tag tag_result_posts_path, method: :get do %>
     <% Tag.all.each do |t| %>
         <%= check_box :tag_ids, t.name %>
         <div class="balloon relative w-[30px] h-3 inline-block border border-zinc-300 mr-2 align-middle" style="background-color: <%= @color_map[t.name.to_sym] %>;">

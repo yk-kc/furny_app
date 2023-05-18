@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'category_result'
-      get 'tag_resu'
+      get 'tag_result'
     end
   end
 
