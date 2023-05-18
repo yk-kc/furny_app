@@ -1,0 +1,3 @@
+$('.follow_buttons_<%= @user.id %>').each(function(index,element){
+  $(element).html("<%= j(render "relationships/btn", user: @user) %>");
+});

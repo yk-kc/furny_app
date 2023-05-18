@@ -15,7 +15,9 @@
             <p class="font-medium text-[26px] pt-[14px]"><%= @user.name %></p>
             <p class="text-[15px] text-neutral-500"><%= @user.username %></p>
           </div>
-            <p class="mx-[30px]"><%= render "relationships/btn", user: @user %></p>
+            <div class="follow_buttons_<%= @user.id %> mx-[30px]">
+              <%= render "relationships/btn", user: @user %>
+            </div>
             <!--ログインユーザーと管理者のみ表示-->
             <% if @user == current_user || current_user.admin? %>
               <p class="absolute right-[10%]"><%= link_to "編集", edit_user_path(@user), class: "inline-flex items-center justify-center h-10 px-5 py-1.5 rounded-3xl border border-stone-500 hover:bg-stone-100 active:bg-stone-300" %></p>

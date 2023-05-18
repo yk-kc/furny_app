@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :is_matching_login_user, only: [:index]
 
   def index
     # ユーザーがいいねした投稿
@@ -18,6 +18,16 @@ class FavoritesController < ApplicationController
     @post = Post.find(params[:post_id])
     favorite = current_user.favorites.find_by(post_id: @post.id)
     favorite.destroy
+  end
+
+  private
+
+   # URLに含まれるユーザーidとログインしているユーザーのidが一致していなかった場合、 投稿一覧にリダイレクトする
+  def is_matching_login_user
+    user = User.find(params[:user_id])
+    unless user.id == current_user.id
+      redirect_to posts_path
+    end
   end
 
 end
