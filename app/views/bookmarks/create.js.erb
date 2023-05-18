@@ -1,1 +1,3 @@
-$('#bookmarks_buttons_<%= @post.id %>').html("<%= j(render "bookmarks/btn", post: @post) %>");
+$('.bookmarks_buttons_<%= @post.id %>').each(function(index,element){
+  $(element).html("<%= j(render "bookmarks/btn", post: @post) %>");
+});
