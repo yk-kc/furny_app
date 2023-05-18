@@ -28,6 +28,8 @@ class User < ApplicationRecord
       length: { minimum: 6, maximum: 14 },
       format: { with: /[a-z\d]{6,}/i, message: "は半角英数字を6文字以上含む必要があります" }
 
+  validates :introduction, length: { maximum: 100 }
+
   # usernameの頭に自動で「@」をつける
   before_create{ self.username= "@" + username}
 
