@@ -12,7 +12,7 @@
 
   <div class="w-full text-center">
     <%= form_with(url: search_posts_path, local: true, method: :get, class: "w-full") do |f| %>
-      <%= f.text_field :keyword, placeholder: "ユーザーを検索、投稿を検索", id: 'Search_Form', class: "w-[30vw] h-[30px] text-black rounded-[5px] border-[#008bbb]" %>
+      <%= f.text_field :keyword, placeholder: "ユーザーを入力、キーワードを入力", id: 'Search_Form', class: "w-[30vw] h-[30px] text-black rounded-[5px] border-[#008bbb]" %>
       <%= f.submit "検索", class: "ml-3" %>
     <% end %>
   </div>
