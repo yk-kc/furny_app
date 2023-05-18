@@ -13,7 +13,8 @@
   <div class="w-full text-center">
     <%= form_with(url: search_posts_path, local: true, method: :get, class: "w-full") do |f| %>
       <%= f.text_field :keyword, placeholder: "ユーザーを入力、キーワードを入力", id: 'Search_Form', class: "w-[30vw] h-[30px] text-black rounded-[5px] border-[#008bbb]" %>
-      <%= f.submit "検索", class: "ml-3" %>
+      <%= f.submit "検索", class: "ml-3 inline-flex items-center justify-center px-[9px] py-1 text-base font-medium leading-6 text-gray-600 whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none" %>
+
     <% end %>
   </div>
   <div class="w-full flex justify-center mt-2">
@@ -37,7 +38,7 @@
             <span class="tag-text absolute hidden p-[2px] bg-zinc-200 w-[95px] text-center text-[80%] left-[30%] bottom-[100%] mb-[12px] rounded-lsg"><%= t.name %></span>
           </div>
         <% end %>
-        <%= submit_tag '色検索' %>
+        <%= submit_tag '色検索', class: "inline-flex items-center justify-center px-[9px] py-1 text-base font-medium leading-6 text-gray-600 whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none" %>
       <% end %>
     </div>
   </div>
