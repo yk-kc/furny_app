@@ -33,9 +33,9 @@ class User < ApplicationRecord
 
   # ゲストログイン機能
   def self.guest
-    find_or_create_by!(name: 'guestuser' ,username: 'guestuser', email: 'guest@example.com') do |user|
+    find_or_create_by!(name: 'guest' ,username: 'guestuser', email: 'guestuser@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64 # ランダムな文字列を生成するRubyのメソッド
-      user.name = "guestuser"
+      user.name = "guest"
       user.username = "guestuser"
     end
   end
