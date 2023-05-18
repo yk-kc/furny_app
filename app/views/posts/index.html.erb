@@ -18,15 +18,15 @@
   </div>
   <div class="flex">
     <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
-      <%= select_tag :tag_id,
-                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+      <%= select_tag :category_id,
+                     options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
                      {
-                       prompt: 'タグで絞り込み検索',
+                       prompt: 'カテゴリー検索',
                        onchange: 'submit(this.form);'
                      }
       %>
     <% end %>
-    
+
     <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
     <% Tag.all.each do |t| %>
         <%= check_box :tag_ids, t.name %>

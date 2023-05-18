@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(created_at: :desc)
-    @tags = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
+    @categories = params[:category_id].present? ? Category.find(params[:category_id]).posts : Post.all
     @color_map = {
       "レッド": "#CC0D0D",
       "ブルー": "#2F6DCB",
