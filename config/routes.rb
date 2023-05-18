@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     get 'timeline'
     collection do
       get 'search'
+      get 'category_result'
+      get 'tag_resu'
     end
   end
 

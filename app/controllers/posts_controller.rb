@@ -38,7 +38,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(created_at: :desc)
-    @categories = params[:category_id].present? ? Category.find(params[:category_id]).posts : Post.all
     @color_map = {
       "レッド": "#CC0D0D",
       "ブルー": "#2F6DCB",
@@ -66,6 +65,15 @@ class PostsController < ApplicationController
     @keyword = params[:keyword]
     @posts = Post.search(@keyword).order(created_at: :desc)
     @users = User.search(@keyword).order(created_at: :desc)
+  end
+
+  def category_result
+    @categories = params[:category_id].present? ? Category.find(params[:category_id]).posts : Post.all
+    @category = Category.find(params[:category_id])
+  end
+
+  def tag_result
+
   end
 
   def timeline
