@@ -8,46 +8,58 @@
       <div class="min-w-[180px] min-h-[180px]">
     <%= image_tag @user.get_profile_image(180,180), class: "rounded-full  border border-stone-500" %>
       </div>
-    <div class="flex flex-col ml-[55px] max-w-[40%] relative">
+      <div class="flex flex-col ml-[55px] max-w-[40%] relative">
 
-      <div class="flex w-full items-center">
-        <div class="">
-          <p class="font-medium text-[26px] pt-[14px]"><%= @user.name %></p>
-          <p class="text-[15px] text-neutral-500"><%= @user.username %></p>
+        <div class="flex w-full items-center">
+          <div class="">
+            <p class="font-medium text-[26px] pt-[14px]"><%= @user.name %></p>
+            <p class="text-[15px] text-neutral-500"><%= @user.username %></p>
+          </div>
+            <p class="mx-[30px]"><%= render "relationships/btn", user: @user %></p>
+            <!--ログインユーザーと管理者のみ表示-->
+            <% if @user == current_user || current_user.admin? %>
+              <p class="absolute right-[10%]"><%= link_to "編集", edit_user_path(@user), class: "inline-flex items-center justify-center h-10 px-5 py-1.5 rounded-3xl border border-stone-500 hover:bg-stone-100 active:bg-stone-300" %></p>
+            <% end %>
         </div>
-          <p class="mx-[30px]"><%= render "relationships/btn", user: @user %></p>
-          <% if @user == current_user || current_user.admin? %>
-            <p class="absolute right-[10%]"><%= link_to "編集", edit_user_path(@user), class: "inline-flex items-center justify-center h-10 px-5 py-1.5 rounded-3xl border border-stone-500 hover:bg-stone-100 active:bg-stone-300" %></p>
-          <% end %>
-      </div>
 
-      <div class="text-[17px] space-x-10 mb-[20px]">
-        <span>
-          <%= link_to user_followings_path(@user) do %>
-            <span class="font-bold"><%= @user.followings.count %></span> フォロー中
-          <% end %>
-        </span>
-        <span>
-          <%= link_to user_followers_path(@user) do %>
-            <span class="font-bold"><%= @user.followers.count %></span> フォロワー
-          <% end %>
-        </span>
-        <span>
-          <span class="font-bold"><%= @user.posts.count %></span> 投稿
-        </span>
-      </div>
+        <div class="text-[17px] space-x-10 mb-[20px]">
+          <span>
+            <%= link_to user_followings_path(@user) do %>
+              <span class="font-bold"><%= @user.followings.count %></span> フォロー中
+            <% end %>
+          </span>
+          <span>
+            <%= link_to user_followers_path(@user) do %>
+              <span class="font-bold"><%= @user.followers.count %></span> フォロワー
+            <% end %>
+          </span>
+          <span>
+            <span class="font-bold"><%= @user.posts.count %></span> 投稿
+          </span>
+        </div>
 
-      <p class=""><%= @user.introduction %></p>
-          <% if @user == current_user || current_user.admin? %>
-          <% end %>
-    </div>
+        <p class=""><%= @user.introduction %></p>
+
+      </div>
     </div>
   </div>
-<p>
-        <%= link_to 'いいね一覧', user_favorites_path(@user) %>
-      </p>
-<!-- ユーザーの投稿一覧 -->
-<%= render 'posts/index', posts: @posts %>
+  <!--ログインユーザーのみ表示-->
+  <% if @user == current_user %>
+    <div class="w-full flex justify-center mb-8">
+      <p class="tracking-[.2em] mr-8">view all</p>
+      |
+      <p class="ml-8"><%= link_to 'いいね一覧', user_favorites_path(@user) %></p>
+    </div>
+  <% end %>
+  <!-- ユーザーの投稿一覧 -->
+  <%= render 'posts/index', posts: @posts %>
 
-</div>
+  <!--モーダルの周囲を薄暗くするマスク-->
+  <div id="mask" class="hidden"></div>
+  <!--モーダル-->
+  <!--あとからJavaScriptで<div>内のコードをshowビューのコードに置き換えます。-->
+  <div id="modal" class="hidden">
+    <p>モーダルウィンドウ<p>
+  </div>
+
 </div>
