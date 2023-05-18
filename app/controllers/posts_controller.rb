@@ -68,7 +68,7 @@ class PostsController < ApplicationController
   end
 
   def category_result
-    @categories = params[:category_id].present? ? Category.find(params[:category_id]).posts : Post.all
+    @categories = params[:category_id].present? ? Category.find(params[:category_id]).posts.order(created_at: :desc) : Post.all
     @category = Category.find(params[:category_id])
   end
 
