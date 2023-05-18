@@ -7,11 +7,21 @@
   <div class="w-full flex justify-center mt-10 mb-8">
     <p>検索結果一覧</p>
   </div>
+  <div class="w-full">
+    <ul class="tab-area table mx-auto border cursor-pointer">
+      <li class="tab active">ユーザー</li>
+      <li class="tab">投稿</li>
+    </ul>
+  </div>
 
-  <%= render 'relationships/users_index', users: @users %>
-
-  <%= render 'posts/index', posts: @posts %>
-
+  <div class="panel-area">
+    <div class="panel active">
+      <%= render 'relationships/users_index', users: @users %>
+    </div>
+    <div class="panel">
+      <%= render 'posts/index', posts: @posts %>
+    </div>
+  </div>
   <!--モーダルの周囲を薄暗くするマスク-->
   <div id="mask" class="hidden"></div>
   <!--モーダル-->

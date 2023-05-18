@@ -95,3 +95,23 @@
   content: "";                       /* コンテンツの挿入 */
   position: absolute;                /* 親要素を基準 */
 }
+
+.tab {
+  width: 200px;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.tab.active {
+  background-color: #a8a29e;
+  color: #fff;
+}
+
+.panel {
+  display: none;
+  text-align: center;
+}
+.panel.active {
+  display: block;
+}

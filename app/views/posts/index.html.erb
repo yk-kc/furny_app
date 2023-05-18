@@ -16,6 +16,28 @@
       <%= f.submit "検索", class: "ml-3" %>
     <% end %>
   </div>
+  <div class="flex">
+    <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
+      <%= select_tag :tag_id,
+                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                     {
+                       prompt: 'タグで絞り込み検索',
+                       onchange: 'submit(this.form);'
+                     }
+      %>
+    <% end %>
+    
+    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+    <% Tag.all.each do |t| %>
+        <%= check_box :tag_ids, t.name %>
+        <%#= t.name %>
+        <div class="balloon relative w-[30px] h-3 inline-block border border-zinc-300 mr-2 align-middle" style="background-color: <%= @color_map[t.name.to_sym] %>;">
+        <span class="tag-text absolute hidden p-[2px] bg-zinc-200 w-[95px] text-center text-[80%] left-[30%] bottom-[100%] mb-[12px] rounded-lsg"><%= t.name %></span>
+      </div>
+    <% end %>
+    <%= submit_tag '検索' %>
+<% end %>
+  </div>
 
   <%= render 'posts/index', posts: @posts %>
 
