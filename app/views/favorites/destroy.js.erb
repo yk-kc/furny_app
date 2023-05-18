@@ -1,1 +1,3 @@
-$('#favorites_buttons_<%= @post.id %>').html("<%= j(render "favorites/btn", post: @post) %>");
+$('.favorites_buttons_<%= @post.id %>').each(function(index,element){
+  $(element).html("<%= j(render "favorites/btn", post: @post) %>");
+});
