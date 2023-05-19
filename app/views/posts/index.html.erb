@@ -45,6 +45,10 @@
 
   <%= render 'posts/index', posts: @posts %>
 
+  <div class="w-full text-center mt-[64px]">
+    <%= paginate @posts %>
+  </div>
+
   <!--モーダルの周囲を薄暗くするマスク-->
   <div id="mask" class="hidden"></div>
   <!--モーダル-->
