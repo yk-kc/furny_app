@@ -1,0 +1,23 @@
+feat: フォローボタンの非同期化、いいね一覧画面へのアクセス制限
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Thu May 18 20:51:34 2023 +0000
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   app/controllers/favorites_controller.rb
+#	modified:   app/controllers/relationships_controller.rb
+#	modified:   app/views/favorites/index.html.erb
+#	modified:   app/views/relationships/_btn.html.erb
+#	new file:   app/views/relationships/create.js.erb
+#	new file:   app/views/relationships/destroy.js.erb
+#	modified:   app/views/users/show.html.erb
+#
+# Untracked files:
+#	:wq
+#
