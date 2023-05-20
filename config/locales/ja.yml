@@ -103,3 +103,5 @@ ja:
   views:
     pagination:
       truncate: "..."
+      previous: "< PREV"
+      next: "NEXT >"
