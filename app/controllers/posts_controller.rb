@@ -16,17 +16,17 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.page(params[:page]).per(1).order(created_at: :desc)
+    @posts = Post.all.page(params[:page]).per(8).order(created_at: :desc)
   end
 
   def search
     @keyword = params[:keyword]
-    @posts = Post.search(@keyword).order(created_at: :desc)
-    @users = User.search(@keyword).order(created_at: :desc)
+    @posts = Post.search(@keyword).page(params[:page]).per(8).order(created_at: :desc)
+    @users = User.search(@keyword).page(params[:page]).per(8).order(created_at: :desc)
   end
 
   def category_result
-    @categories = params[:category_id].present? ? Category.find(params[:category_id]).posts.order(created_at: :desc) : Post.all
+    @categories = params[:category_id].present? ? Category.find(params[:category_id]).posts.page(params[:page]).per(8).order(created_at: :desc) : Post.all
     @category = Category.find(params[:category_id])
   end
 
@@ -38,11 +38,12 @@ class PostsController < ApplicationController
         @posts += Tag.find_by(name: key).posts if value == "1"
       end
       @posts.uniq!
+      @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(8)
     end
   end
 
   def timeline
-    @feeds = Post.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
+    @feeds = Post.where(user_id: [current_user.id, *current_user.following_ids]).page(params[:page]).per(8).order(created_at: :desc)
   end
 
   def show
