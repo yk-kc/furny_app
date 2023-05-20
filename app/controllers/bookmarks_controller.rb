@@ -3,7 +3,7 @@ class BookmarksController < ApplicationController
 
   def index
     # ユーザーがブックマークした投稿
-    @posts = Post.joins(:bookmarks).where(bookmarks: { user_id: params[:user_id] })
+    @posts = Post.joins(:bookmarks).where(bookmarks: { user_id: params[:user_id] }).page(params[:page]).per(8)
   end
 
   def create
