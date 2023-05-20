@@ -54,6 +54,7 @@ class PostsController < ApplicationController
       # link_toメソッドをremote: trueに設定したのでリクエストはjs形式で行われる
       format.js
     end
+    @user = current_user
   end
 
   def edit
