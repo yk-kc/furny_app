@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts # アソシエーションを持っているモデル同士の記述方法。@userに関連付けられた投稿全て（.posts）を取得し@postsに渡す処理
+    @posts = @user.posts.page(params[:page]).per(8).order(created_at: :desc) # アソシエーションを持っているモデル同士の記述方法。@userに関連付けられた投稿全て（.posts）を取得し@postsに渡す処理
   end
 
   def edit
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   def ensure_guest_user
     @user = User.find(params[:id])
-    if @user.name == "guestuser"
+    if @user.email == 'guestuser@example.com'
       redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
