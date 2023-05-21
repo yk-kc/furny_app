@@ -50,9 +50,11 @@
   transform: translate(0, 0) scale(1);
   transition: 0.2s;   /* transitionでアニメーションを作成 */
   z-index: 20;   /* マスクより上に重なるようにする */
-  max-width: 70%;   /* showビューの幅に合わせて設定 */
+  max-width: 65%;   /* showビューの幅に合わせて設定 */
   max-height: 90%;
   background-color: white;
+  // min-width: 1248px;
+  aspect-ratio: 16 / 9;
 }
 
 /* hiddenクラスで最初は表示されないようにする */

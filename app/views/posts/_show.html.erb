@@ -26,12 +26,14 @@
     </div>
   <% end %>
 
-  <div class="w-[38%]">
-    <div class="flex items-end border-b border-zinc-200 pb-4">
-      <%= image_tag post.user.get_profile_image(65,65), class: "rounded-full mt-4 ml-[17px] border border-stone-500" %>
-      <p class="text-[20px] font-medium mr-2 ml-4 mb-4"><%= post.user.name %></p>
-      <p class="text-[14px] text-neutral-500 mb-4"><%= post.user.username %></p>
-      <div class="follow_buttons_<%= post.user.id %> mx-[30px]">
+  <div class="flex flex-col grow w-[38%] min-w-[409px] px-[15px] relative">
+    <div class="flex items-center border-b border-zinc-200 py-[10px]">
+      <%= image_tag post.user.get_profile_image(65,65), class: "rounded-full border border-stone-500" %>
+      <div class="mx-[15px]">
+      <p class="text-[20px] font-medium"><%= post.user.name %></p>
+      <p class="text-[14px] text-neutral-500"><%= post.user.username %></p>
+      </div>
+      <div class="follow_buttons_<%= post.user.id %>">
         <%= render 'relationships/btn', user: post.user %>
       </div>
     </div>
@@ -40,29 +42,40 @@
         <span class="tag-text absolute hidden p-[2px] bg-zinc-200 w-[95px] text-center text-[80%] left-[30%] bottom-[100%] mb-[12px] rounded-lg"><%= tag.name %></span>
       </div>
     <% end %>
-    <p>ショップ名：<%= post.furniture_name %></p>
-    <p>説明：<%= post.caption %></p>
-    <p>投稿日時：<%= post.created_at.strftime('%Y/%m/%d') %></p>
-    <% if post.user == current_user || current_user.admin? %>
-    <%= link_to "削除", post_path(post), method: :delete, class: "bg-red-600 hover:bg-red-500 text-white rounded px-4 py-1" %>
-    <% end %>
+    <div class="overflow-auto flex flex-col grow pb-[20px]">
+      <p class="max-w-max text-[20px] font-medium border-b border-black pb-[4px] px-[8px] mt-[9px]"><%= post.furniture_name %></p>
+      <p class="p-[22px]"><%= post.caption %></p>
+      <p class="text-right"><%= post.created_at.strftime('%Y/%m/%d') %></p>
 
-    <div class="favorites_buttons_<%= post.id %> mt-3 ml-5">
-      <%= render 'favorites/btn', post: post %>
-    </div>
+      <% if post.user == current_user || current_user.admin? %>
+        <%= link_to "削除", post_path(post), method: :delete, class: "bg-red-600 hover:bg-red-500 text-white rounded px-4 py-1" %>
+      <% end %>
 
-    <div class="bookmarks_buttons_<%= post.id %> ml-auto mt-3 mr-5">
-      <%= render 'bookmarks/btn', post: post %>
+      <div id="new-comments">
+        <%= render 'post_comments/index', post: post %>
+      </div>
     </div>
+    <div class="flex flex-col mt-auto pb-[15px]">
+      <div class="flex justify-between border-t border-b border-zinc-200 px-[10px] py-[20px]">
+        <div class="flex">
+          <div class="favorites_buttons_<%= post.id %>">
+            <%= render 'favorites/btn', post: post %>
+          </div>
+          <div class="ml-3">
+          <%= render 'post_comments/btn', post: post %>
+          </div>
+        </div>
 
-    <p>コメント件数：<%= post.post_comments.count %></p>
-    <div id="new-comments">
-    <%= render 'post_comments/index', post: post %>
+        <div class="bookmarks_buttons_<%= post.id %>">
+          <%= render 'bookmarks/btn', post: post %>
+        </div>
+      </div>
+
+      <div id="comments-area">
+        <%= render 'post_comments/form', post: post, post_comment: post_comment %>
+      </div>
     </div>
-    <div id="comments-area">
-    <%= render 'post_comments/form', post: post, post_comment: post_comment %>
-    </div>
-    </div>
+  </div>
 
 
 </div>
