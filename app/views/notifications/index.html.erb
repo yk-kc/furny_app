@@ -2,13 +2,13 @@
 
 <div class="w-64 shrink-0"></div>
 
-<div class="h-full">
+<div class="min-h-full font-gothic-new">
   <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
       <%= render @notifications %>
-      <%= paginate notifications %>
+      <%#= paginate notifications %>
     <% else %>
-      <p>通知はありません</p>
+      <p class="w-full text-center mt-10">通知はありません</p>
   <% end %>
   <!--モーダルの周囲を薄暗くするマスク-->
   <div id="mask" class="hidden"></div>

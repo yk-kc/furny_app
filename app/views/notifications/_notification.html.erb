@@ -1,10 +1,10 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<div class="col-md-6 mx-auto">
+<div class="mx-auto">
   <div class="form-inline">
     <span>
       <%= link_to user_path(visitor) do %>
-        <%= image_tag visitor.get_profile_image(50,50), class: "rounded-full" %>
+        <%= image_tag visitor.get_profile_image(50,50), class: "rounded-full inline-block" %>
         <strong><%= visitor.name %></strong>
       <% end %>
       さんが
@@ -23,18 +23,19 @@
           <span>
             <%= link_to post_path(notification.post), remote: true do %>
               <%= image_tag notification.post.user.get_profile_image(50,50), class: "rounded-full" %>
-              <strong><%= notification.post.user.name + 'さんの投稿にコメントしました' %></strong>
+              <strong><%= notification.post.user.name + 'さんの投稿' %></strong>
             <% end %>
           </span>
         <% end %>
-        <p class="text-muted mb-0">
+        <%= "にコメントしました" %>
+        <p class="text-natural-500 mb-0">
           <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
         </p>
     <% end %>
 
   </div>
-  <div class="small text-muted text-right">
+  <div class="text-natural-500 text-right">
     <%= time_ago_in_words(notification.created_at).upcase %>
   </div>
-  <hr>
+  <hr class="mb-[10px]">
 </div>
