@@ -2,6 +2,7 @@
 
 <div class="w-64 shrink-0"></div>
 
-<div class="z-0">
+<div class="z-0 font-gothic-new flex flex-col grow">
+  <p class="text-center"><%= flash[:notice] %></p>
   <%= render 'posts/show', post: @post, post_comment: @post_comment %>
 </div>

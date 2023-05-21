@@ -1,2 +1,47 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<%= render 'layouts/sidebar' %>
+
+<div class="w-64 shrink-0"></div>
+
+<div class="font-gothic-new h-full flex flex-col justify-center mx-auto text-center">
+  <%= render 'layouts/errors', obj: @post %>
+  <p class="my-10">投稿編集</p>
+  <%= form_with model: @post do |f| %>
+      <div class="mb-5">
+      <%= f.label :furniture_name, "インテリア家具名", class: "font-semibold block p-1" %>
+      <%= f.text_field :furniture_name, required: true, class: "w-[14vw] h-[30px] text-black rounded-[5px]" %>
+    </div>
+    <div class="mb-5">
+      <%= f.label :caption, "キャプション", class: "font-semibold block p-1" %>
+      <%= f.text_area :caption, class: "w-[18vw] text-black rounded-[5px]" %>
+    </div>
+    <div class="mb-5">
+      <%= f.label :category_id, "カテゴリ", class: "font-semibold block p-1" %>
+      <%= f.collection_select :category_id, Category.all, :id, :name, { :include_blank => "選択してください ▼" }, :required => true, class: "cursor-pointer" %>
+    </div>
+    <div class='mb-5'>
+      <%= f.label :tag, "カラー", class: "font-semibold inline-block p-1" %>
+      <span> (複数チェック可)</span>
+      <div class="flex flex-wrap w-[315px]">
+        <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, include_hidden: false do |tag| %>
+        <!--第一引数 :tag_idsはpostオブジェクトのプロパティ名-->
+        <!--第二引数 Tag.allはtagオブジェクトの配列を取得-->
+        <!--第三引数 :id　チェックボックスのvalue属性の値-->
+        <!--第四引数 :name チェックボックスのラベル名-->
+            <div class='form-check'>
+                <%= tag.label class: 'form-check-label' do %>
+                    <%= tag.check_box class: 'form-check-input inline-block' %>
+                    <div class="balloon relative w-[30px] h-3 inline-block border border-zinc-300 mr-3 align-middle" style="background-color: <%= Constants::COLOR_MAP[tag.text.to_sym] %>;">
+                      <span class="tag-text absolute hidden p-[2px] bg-zinc-200 w-[95px] text-[80%] left-[30%] bottom-[100%] mb-[12px] rounded-lg"><%= tag.text %></span>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+      <%= f.submit "変更を保存", class: "inline-flex items-center justify-center px-[10px] py-1.5 font-medium leading-6 text-black whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none cursor-pointer" %>
+  <% end %>
+</div>
+
+
+
+</div>
