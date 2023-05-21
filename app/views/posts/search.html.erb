@@ -16,9 +16,11 @@
 
   <div class="panel-area">
     <div class="panel active">
+       <p class="w-full text-center"><%= @users.count %> 件</p>
       <%= render 'relationships/users_index', users: @users %>
     </div>
     <div class="panel">
+       <p class="w-full text-center"><%= @posts.count %> 件</p>
       <%= render 'posts/index', posts: @posts %>
     </div>
   </div>
