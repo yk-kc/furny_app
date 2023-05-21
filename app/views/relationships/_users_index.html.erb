@@ -2,26 +2,32 @@
 <table class='table'>
   <thead>
     <tr>
-      <th>image</th>
-      <th>name</th>
+      <th></th>
+      <th></th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td><%= image_tag user.get_profile_image(100,100), class: "rounded-full" %></td>
-        <td><%= user.name %></td>
-        <% if user.name != "guestuser" %>
-        <td>フォロー数: <%= user.followings.count %></td>
-        <td>フォロワー数: <%= user.followers.count %></td>
-        <td><%= render "relationships/btn", user: user %></td>
-        <% else %>
-        <td></td>
-        <td></td>
-        <td></td>
-        <% end %>
-        <td><%= link_to 'Show', user_path(user.id) %></td>
+        <td class="py-">
+          <%= link_to user_path(user) do %>
+            <%= image_tag user.get_profile_image(100,100), class: "rounded-full" %>
+          <% end %>
+        </td>
+        <td class="px-2">
+          <%= link_to user_path(user) do %>
+            <p class="text-[20px] font-medium"><%= user.name %></p>
+            <p class="text-[15px]"><%= user.username %></p>
+          <% end %>
+        </td>
+        <td class="px-2 text-[17px]"><span class="font-bold"><%= user.followings.count %></span> フォロー</td>
+        <td class="text-[17px]"><span class="font-bold"><%= user.followers.count %></span> フォロワー</td>
+        <td>
+          <div class="follow_buttons_<%= user.id %> mx-[30px]">
+            <%= render "relationships/btn", user: user %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
