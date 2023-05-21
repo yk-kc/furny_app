@@ -1,21 +1,14 @@
 
 <table class='table'>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td class="py-">
+        <td class="py-2">
           <%= link_to user_path(user) do %>
             <%= image_tag user.get_profile_image(100,100), class: "rounded-full" %>
           <% end %>
         </td>
-        <td class="px-2">
+        <td class="px-5 text-left">
           <%= link_to user_path(user) do %>
             <p class="text-[20px] font-medium"><%= user.name %></p>
             <p class="text-[15px]"><%= user.username %></p>
