@@ -8,9 +8,9 @@
 
 User.create!(name:  "yu",
              username: "@yuu415",
-             email: "yu415@gmail.com",
-             password:  "111111",
-             password_confirmation: "111111",
+             email: "#{ENV["OWNER_ADDRESS"]}",
+             password:  "#{ENV["ADMIN_PASSWORD"]}",
+             password_confirmation: "#{ENV["ADMIN_PASSWORD"]}",
              admin: true)
 
 category_lists = ["ソファ", "チェア・椅子", "テーブル", "デスク", "収納家具", "キッチン収納・食器棚", "テレビボード", "ハンガーラック", "玄関収納・小物", "ライト・照明", "ベッド", "寝具・タオル", "ミラー・ドレッサー", "ラグ・カーペット", "クッション", "時計", "花器・プランター・グリーン", "オブジェ・アート", "食器・テーブルウェア", "雑貨・その他インテリア家具"]
