@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :bookmarks, only: [:index]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    collection do
+      patch "withdraw/:id" => "users#withdraw", as: "withdraw"
+    end
   end
 
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do

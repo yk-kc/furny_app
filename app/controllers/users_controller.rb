@@ -27,10 +27,24 @@ class UsersController < ApplicationController
   end
 
   def destroy
-      @user = User.find(params[:id])
-      @user.destroy
-      flash[:notice] = 'ユーザーを削除しました。'
-      redirect_to "/"
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = 'ユーザーを削除しました。'
+    redirect_to "/"
+  end
+
+  def withdraw
+    @user = User.find(params[:id])
+    # !をつけて、true/falseを反転させて、有効、退会を切り替えることができる。
+    @user.update(is_deleted: !@user.is_deleted)
+
+    if @user.is_deleted
+       flash[:notice] = "アカウントをBANしました"
+    else
+       flash[:notice] = "有効にしました"
+    end
+   redirect_to users_path
+
   end
 
   private

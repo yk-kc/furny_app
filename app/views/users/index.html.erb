@@ -1,19 +1,40 @@
 <%= render 'layouts/sidebar' %>
 <div class="font-gothic-new min-h-full text-left">
+  <p class="text-center"><%= flash[:notice] %></p>
   <h1 class="font-bold my-10">管理者専用ページ</h1>
 
-  <% if user_signed_in? %>
-    <% if current_user.admin? %>
-      <% sum = 0 %>
-        <% @users.each do |u| %>
-          <div class="border">
-            <p>メアド:<%= u.email %></p>
-            <p>名前:<%= u.name %>さん</p>
-          </div>
-          <% sum += 1 %>
+  <table class="border-collapse border border-slate-400 table-auto">
+    <thead>
+      <tr>
+        <th class="border border-slate-400 p-4">名前</th>
+        <th class="border border-slate-400 p-4">メールアドレス</th>
+        <th class="border border-slate-400 p-4">会員ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if user_signed_in? %>
+        <% if current_user.admin? %>
+          <% sum = 0 %>
+            <% @users.each do |u| %>
+              <tr>
+                <td class="border border-slate-400 p-4"><%= u.name %>さん</td>
+                <td class="border border-slate-400 p-4"><%= u.email %></td>
+                <td class="border border-slate-400 p-4">
+                  <% if u.is_deleted %>
+                    垢BAN済
+                    <%= link_to "有効にする", withdraw_users_path(u.id), method: :patch, class: "text-white bg-cyan-500 hover:bg-cyan-400 px-3 py-1.5 ml-2 rounded-full cursor-pointer" %>
+                  <% else %>
+                    有効
+                    <%= link_to "垢BANにする", withdraw_users_path(u.id), method: :patch, class: "text-white bg-red-500 hover:bg-red-400 px-3 py-1.5 ml-2 rounded-full cursor-pointer" %>
+                  <% end %>
+                </td>
+              </tr>
+              <% sum += 1 %>
+            <% end %>
+            <!--<p><%#= paginate @users %></p>-->
+            <p>登録者合計：<%= sum %></p>
         <% end %>
-        <!--<p><%#= paginate @users %></p>-->
-        <p>登録者合計：<%= sum %></p>
-    <% end %>
-  <% end %>
+      <% end %>
+    </tbody>
+  </table>
 </div>

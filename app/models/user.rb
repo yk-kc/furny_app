@@ -33,6 +33,11 @@ class User < ApplicationRecord
   # usernameの頭に自動で「@」をつける
   before_create{ self.username= "@" + username}
 
+  # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
   # ゲストログイン機能
   def self.guest
     find_or_create_by!(email: 'guestuser@example.com') do |user|
