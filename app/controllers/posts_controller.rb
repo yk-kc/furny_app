@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :ensure_user, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -81,6 +82,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:furniture_name, :caption, :category_id, images: [], tag_ids: []) # 複数画像、複数タグなので配列で受け取る
+  end
+
+  def ensure_user
+    # current_userの全投稿の中に送られてきた投稿idがあるまたはcurrent_userがadminの場合
+    @posts = current_user.posts
+    @post = @posts.find_by(id: params[:id]) || (current_user.admin == true )
+    redirect_to posts_path unless @post
   end
 
 end
