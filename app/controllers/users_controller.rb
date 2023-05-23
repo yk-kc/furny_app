@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :user_admin, only: [:index]
   before_action :ensure_guest_user, only: [:edit]
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all.page(params[:page]).per(8)
@@ -26,13 +26,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def withdraw
-    @user = User.find(params[:id])
-    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
-    @user.update(is_deleted: true)
-    reset_session
-    flash[:notice] = "退会処理を実行いたしました"
-    redirect_to '/'
+  def destroy
+      @user = User.find(params[:id])
+      @user.destroy
+      flash[:notice] = 'ユーザーを削除しました。'
+      redirect_to "/"
   end
 
   private

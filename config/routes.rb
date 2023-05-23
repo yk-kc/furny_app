@@ -2,23 +2,17 @@ Rails.application.routes.draw do
   get '/' => 'homes#top'
   devise_for :users
 
-
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
-  resources :users, only: [:index, :show, :edit, :update] do
+  resources :users, only: [:index, :show, :edit, :update, :destroy] do
     resource :relationships, only: [:create, :destroy]
     resources :favorites, only: [:index]
     resources :bookmarks, only: [:index]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
-
-  # 退会確認画面
-  get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-  # 論理削除用のルーティング
-  patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
 
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create , :destroy]
