@@ -1,7 +1,5 @@
 <%= render 'layouts/sidebar' %>
 
-<div class="w-64 h-full shrink-0"></div>
-
 <div class="font-gothic-new w-full h-max flex flex-wrap justify-center">
 
   <div class="w-full flex justify-center mt-10 mb-8">
@@ -9,7 +7,7 @@
   </div>
 
   <%= render 'posts/index', posts: @posts %>
-  
+
   <!--モーダルの周囲を薄暗くするマスク-->
   <div id="mask" class="hidden"></div>
   <!--モーダル-->

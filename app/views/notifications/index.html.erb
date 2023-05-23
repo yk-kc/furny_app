@@ -1,7 +1,5 @@
 <%= render 'layouts/sidebar' %>
 
-<div class="w-64 shrink-0"></div>
-
 <div class="min-h-full font-gothic-new">
   <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>

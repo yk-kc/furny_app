@@ -1,7 +1,5 @@
 <%= render 'layouts/sidebar' %>
 
-<div class="w-64 shrink-0"></div>
-
 <div class="font-gothic-new h-full flex flex-col justify-center mx-auto text-center">
   <%= render 'layouts/errors', obj: @user %>
   <p class="my-10">プロフィール編集</p>
@@ -22,5 +20,3 @@
   <% end %>
   <botton><%= link_to "退会する", unsubscribe_path(@user), class: "mt-10 inline-flex items-center justify-center px-[10px] py-1.5 font-medium text-white border rounded-md bg-red-500 hover:bg-red-400" %></botton>
 </div>
-
-
