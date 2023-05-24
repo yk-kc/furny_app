@@ -17,7 +17,7 @@ class Post < ApplicationRecord
   FILE_NUMBER_LIMIT = 5
   validate :validate_number_of_files
 
-  validates :furniture_name, presence: true, length: { maximum: 17 }
+  validates :furniture_name, presence: true, length: { maximum: 30 }
   validates :caption, length: { maximum: 2000 }
 
   validates :tag_ids, presence: true

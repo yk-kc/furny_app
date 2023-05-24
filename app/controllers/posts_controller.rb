@@ -87,7 +87,7 @@ class PostsController < ApplicationController
   def ensure_user
     # current_userの全投稿の中に送られてきた投稿idがあるまたはcurrent_userがadminの場合
     @posts = current_user.posts
-    @post = @posts.find_by(id: params[:id]) || (current_user.admin == true )
+    @post = @posts.find_by(id: params[:id]) || ( current_user.admin == true )
     redirect_to posts_path unless @post
   end
 
