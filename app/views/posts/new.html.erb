@@ -17,13 +17,13 @@
     </div>
 
     <div class="mb-3">
-      <%= f.label :furniture_name, "ショップ名", class: "font-semibold block p-1" %>
-        <%= f.text_field :furniture_name, required: true, class: "w-[14vw] h-[30px] text-black rounded-[5px]" %>
+      <%= f.label :furniture_name, "タイトル", class: "font-semibold block p-1" %>
+        <%= f.text_field :furniture_name, required: true, placeholder: "ショップ名など...", class: "w-[14vw] h-[30px] text-black rounded-[5px]" %>
     </div>
 
     <div class="mb-3">
       <%= f.label :caption, "キャプション", class: "font-semibold block p-1" %>
-        <%= f.text_area :caption, class: "w-[18vw] text-black rounded-[5px]" %>
+        <%= f.text_area :caption, placeholder: "キャプション...", class: "w-[18vw] text-black rounded-[5px]" %>
     </div>
 
     <div class="form-group">
