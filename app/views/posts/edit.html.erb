@@ -5,7 +5,7 @@
   <p class="my-10">投稿編集</p>
   <%= form_with model: @post do |f| %>
       <div class="mb-5">
-      <%= f.label :furniture_name, "インテリア家具名", class: "font-semibold block p-1" %>
+      <%= f.label :furniture_name, "ショップ名", class: "font-semibold block p-1" %>
       <%= f.text_field :furniture_name, required: true, class: "w-[14vw] h-[30px] text-black rounded-[5px]" %>
     </div>
     <div class="mb-5">
