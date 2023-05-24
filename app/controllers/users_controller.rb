@@ -50,11 +50,11 @@ class UsersController < ApplicationController
   private
 
   def user_admin
-    @users = User.all
+    # @users = User.all
     if  current_user.admin == false
        redirect_to "/"
-    else
-       render action: "index"
+    # else
+    #   render action: "index"
     end
   end
 
