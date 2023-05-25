@@ -1,7 +1,7 @@
 <%= render 'layouts/sidebar' %>
 
-<div class="font-gothic-new w-full h-full min-h-full flex flex-wrap justify-center">
-    <p class="font-semibold w-full text-center my-9">フォロワー</p>
+<div class="font-gothic-new w-full min-h-full flex flex-col items-center">
+  <p class="font-semibold w-full text-center my-5 sm:my-9">フォロワー</p>
   <% if @users.exists? %>
     <%= render 'users_index', users: @users %>
   <% else %>
