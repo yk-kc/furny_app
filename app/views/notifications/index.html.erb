@@ -1,6 +1,6 @@
 <%= render 'layouts/sidebar' %>
 
-<div class="min-h-full font-gothic-new mx-auto">
+<div class="min-h-full font-gothic-new mx-auto px-[8px]">
   <p class="font-semibold text-center my-10">通知一覧</p>
 
   <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
