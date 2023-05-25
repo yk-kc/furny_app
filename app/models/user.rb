@@ -49,8 +49,8 @@ class User < ApplicationRecord
 
   def get_profile_image(width, height)
       unless profile_image.attached?
-        file_path = Rails.root.join("app/assets/images/default-image.jpg")
-        profile_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
+        file_path = Rails.root.join("app/assets/images/no-image.jpg")
+        profile_image.attach(io: File.open(file_path), filename: "no-image.jpg", content_type: "image/jpeg")
       end
       profile_image.variant(resize: "#{width}x#{height}^", gravity: "center", crop: "#{width}x#{height}+0+0").processed
   end
