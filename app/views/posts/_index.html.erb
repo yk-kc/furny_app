@@ -33,7 +33,7 @@
         <span class="text-[15px] text-neutral-500"><%= post.user.username %></span>
       <% end %>
     </p>
-    <p class="text-neutral-500"><%= time_ago_in_words(post.created_at).upcase %></p>
+    <p class="text-neutral-500"><%= time_ago_in_words(post.created_at).gsub(/約/, '').upcase %></p>
     </div>
   </div>
 

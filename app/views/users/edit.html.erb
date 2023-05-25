@@ -16,9 +16,10 @@
       <label for="inputIntroduction">プロフィール文</label><br>
       <%= f.text_area :introduction, id:"inputIntroduction", placeholder:"プロフィール文はここに", class: "w-[15vw] text-black rounded-[5px]" %>
     </div>
-      <%= f.submit "変更を保存", class: "inline-flex items-center justify-center px-[10px] py-1.5 font-medium leading-6 text-black whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none cursor-pointer" %>
+      <%= f.submit "変更を保存", class: "inline-flex items-center justify-center px-[10px] py-1.5 font-medium leading-6 text-white whitespace-no-wrap bg-gray-500 border border-gray-200 rounded-md shadow-sm hover:bg-gray-400 focus:outline-none focus:shadow-none cursor-pointer" %>
   <% end %>
   <% if @user.email != 'guestuser@example.com' && ( @user == current_user ) %>
-    <botton><%= link_to "退会する", user_path(current_user.id), method: :delete, data: { confirm: "退会をされますと、データの復元はできません。本当に退会しますか？" }, class: "mt-10 inline-flex items-center justify-center px-[10px] py-1.5 font-medium text-white border rounded-md bg-red-500 hover:bg-red-400" %></botton>
+    <p class="mt-28 mb-5">退会はこちらから</p>
+    <botton><%= link_to "退会する", user_path(current_user.id), method: :delete, data: { confirm: "退会をされますと、データの復元はできません。本当に退会しますか？" }, class: "mb-5 inline-flex items-center justify-center px-[10px] py-1.5 font-medium text-white border rounded-md bg-red-500 hover:bg-red-400" %></botton>
   <% end %>
 </div>

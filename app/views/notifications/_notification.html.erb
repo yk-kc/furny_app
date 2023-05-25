@@ -35,7 +35,7 @@
 
   </div>
   <div class="text-natural-500 text-right">
-    <%= time_ago_in_words(notification.created_at).upcase %>
+    <%= time_ago_in_words(notification.created_at).gsub(/約/, '').upcase %>
   </div>
   <hr class="mb-[10px]">
 </div>
