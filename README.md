@@ -34,7 +34,7 @@
 - IDE：Cloud9
 
 ## 使用素材
-- FontAwesome
 - Heroicons
 - Google Fonts
 - Figmaのプラグイン「Unsplash」 https://www.figma.com/community/plugin/738454987945972471/Unsplash
+- フリー素材ブログ https://www.shoshinsha-design.com/
