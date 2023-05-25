@@ -3,27 +3,27 @@
 <div class="w-full">
   <div class="relative">
     <%= image_tag 'unsplash_top_image2.png', class: "bg-cover z-0" %>
-    <p class="font-shippori absolute inset-y-2/4 left-40 text-xl">暮らしの中に、インテリアで調和を。</p>
+    <p class="font-shippori absolute inset-y-2/4 left-[25px] text-[12px] sm:left-40 sm:text-xl">暮らしの中に、インテリアで調和を。</p>
   </div>
-    <div class="my-10 pb-28">
-      <span class="font-shippori text-4xl border-b border-black pb-2.5 ml-24">Furnyについて</span>
-      <div class="font-shippori text-xl mt-16 ml-24">
+    <div class="my-10 sm:pb-28">
+      <span class="font-shippori text-[20px] sm:text-4xl border-b border-black pb-2.5 ml-[40px] sm:ml-24">Furnyについて</span>
+      <div class="font-shippori text-[14px] my-[35px] mx-[20px] sm:text-xl sm:mt-16 sm:ml-24">
         <p class="tracking-[0.1em]">　Funiture ＋ Harmony</p><br>
         <p>インテリアは一つだけでは成り立たない。</p><br>
         <p>多種多様のインテリアたちによって調和し、空間を、暮らしを作っていくものである。</p><br>
-        <p class="mt-16"><span class="tracking-[0.1em]">Furny</span>は、そんなインテリア家具が好きな人のためのSNS。</p>
+        <p class="mt-16"><span class="sm:tracking-[0.1em]">Furny</span>は、そんなインテリア家具が好きな人のためのSNS。</p>
       </div>
     </div>
   <% if user_signed_in? %>
   <% else %>
     <hr>
-    <div class="font-gothic-new flex text-lg mt-24 ml-48">
-      <P>アカウント登録はこちら</P>
-      <botton><%= link_to "サインアップ", new_user_registration_path, class: "font-gothic-new rounded-md bg-transparent px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-green-600/20 hover:text-white hover:bg-emerald-400 ml-5" %></botton>
+    <div class="font-gothic-new sm:flex text-center mt-[35px] mb-[15px] text-[14px] sm:text-lg sm:mt-24 sm:ml-48">
+      <P class="mb-[10px]">アカウント登録はこちら</P>
+      <botton><%= link_to "サインアップ", new_user_registration_path, class: "font-gothic-new rounded-md bg-transparent px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-green-600/20 hover:text-white hover:bg-emerald-400 sm:ml-5" %></botton>
     </div>
-    <div class="font-gothic-new flex text-lg mt-16 ml-48 mb-10">
-      <P>ゲストログイン(閲覧用)はこちら</P>
-      <botton><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "font-gothic-new rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-500/10 hover:text-white hover:bg-neutral-300 ml-5" %></botton>
+    <div class="font-gothic-new sm:flex text-center text-[14px] my-[15px] sm:text-lg sm:mt-16 sm:ml-48 mb-10">
+      <P class="mb-[10px]">ゲストログイン(閲覧用)はこちら</P>
+      <botton><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "font-gothic-new rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-gray-500/10 hover:text-white hover:bg-neutral-300 sm:ml-5" %></botton>
     </div>
   <% end %>
 </div>
