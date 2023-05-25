@@ -1,14 +1,14 @@
 <% posts.each do |post| %>
 
-  <div class="w-80 h-[30rem] bg-[#EDEEE9] border border-black overflow-hidden mx-2.5 mt-5 shadow-lg">
+  <div class="w-[100px] h-[100px] sm:w-80 sm:h-[30rem] bg-[#EDEEE9] border border-black overflow-hidden mx-[2px] mt-[4px] sm:mx-2.5 sm:mt-5 shadow-lg">
 
-    <div class="w-80 h-80 border-b border-black">
+    <div class="w-[100px] h-[100px] sm:w-80 sm:h-80 border-b border-black">
       <%= link_to post_path(post), remote: true do %>
         <%= image_tag post.images[0], class: "w-full h-full object-cover" %>
       <% end %>
     </div>
 
-    <div class="flex">
+    <div class="hidden sm:flex">
       <div class="favorites_buttons_<%= post.id %> mt-3 ml-5">
         <%= render 'favorites/btn', post: post %>
       </div>

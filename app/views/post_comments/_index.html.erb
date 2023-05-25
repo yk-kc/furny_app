@@ -3,7 +3,7 @@
   <% post.post_comments.each do |post_comment| %>
     <div class="flex">
       <%= link_to user_path(post_comment.user) do %>
-        <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-full mr-[25px]" %>
+        <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-full mr-[25px] w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]" %>
       <% end %>
       <div class="w-full">
         <div class="w-full">
@@ -15,7 +15,7 @@
         </div>
 
         <div class="w-full flex justify-between mt-[9px]">
-          <p class=""><%= post_comment.comment %></p>
+          <p><%= post_comment.comment %></p>
           <% if post_comment.user == current_user || current_user.admin? %>
             <%= link_to post_post_comment_path(post, post_comment), method: :delete, data: {confirm: "削除しますか？"}, remote: true, class: "cursor-pointer" do %>
               <svg class="w-6 h-6 text-red-600 hover:text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

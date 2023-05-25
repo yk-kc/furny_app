@@ -12,18 +12,18 @@
       <p class="mb-1"><%= f.label :images, "画像", class: "font-semibold p-1" %> ( 5枚まで )</p>
       <%= f.file_field :images, multiple: true, required: true, accept: "image/*" %>
     </div>
-    <div id="new-image" class="flex justify-center">
+    <div id="new-image" class="flex flex-wrap justify-center">
 
     </div>
 
     <div class="mb-3">
       <%= f.label :furniture_name, "タイトル", class: "font-semibold block p-1" %>
-        <%= f.text_field :furniture_name, required: true, placeholder: "ショップ名など...", class: "w-[14vw] h-[30px] text-black rounded-[5px]" %>
+        <%= f.text_field :furniture_name, required: true, placeholder: "ショップ名など...", class: "xl:w-[14vw] h-[30px] text-black rounded-[5px]" %>
     </div>
 
     <div class="mb-3">
       <%= f.label :caption, "キャプション", class: "font-semibold block p-1" %>
-        <%= f.text_area :caption, placeholder: "キャプション...", class: "w-[18vw] text-black rounded-[5px]" %>
+        <%= f.text_area :caption, placeholder: "キャプション...", class: "w-[265px] xl:w-[18vw] text-black rounded-[5px]" %>
     </div>
 
     <div class="form-group">
@@ -34,7 +34,7 @@
     <div class='form-group'>
       <%= f.label :tag, "カラー", class: "font-semibold inline-block p-1" %>
       <span> (複数チェック可)</span>
-      <div class="flex flex-wrap w-[315px]">
+      <div class="flex flex-wrap w-[315px] mx-auto">
         <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, include_hidden: false do |tag| %>
         <!--第一引数 :tag_idsはpostオブジェクトのプロパティ名-->
         <!--第二引数 Tag.allはtagオブジェクトの配列を取得-->

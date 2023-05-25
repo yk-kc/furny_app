@@ -4,12 +4,12 @@ class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.all.page(params[:page]).per(8)
+    @users = User.all.page(params[:page]).per(12)
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(8).order(created_at: :desc) # アソシエーションを持っているモデル同士の記述方法。@userに関連付けられた投稿全て（.posts）を取得し@postsに渡す処理
+    @posts = @user.posts.page(params[:page]).per(12).order(created_at: :desc) # アソシエーションを持っているモデル同士の記述方法。@userに関連付けられた投稿全て（.posts）を取得し@postsに渡す処理
   end
 
   def edit

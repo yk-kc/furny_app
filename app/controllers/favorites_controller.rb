@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
 
   def index
     # ユーザーがいいねした投稿
-    @posts = Post.joins(:favorites).where(favorites: { user_id: params[:user_id] }).page(params[:page]).per(8)
+    @posts = Post.joins(:favorites).where(favorites: { user_id: params[:user_id] }).page(params[:page]).per(12)
     @user = User.find(params[:user_id])
   end
 
