@@ -17,8 +17,8 @@
             <div class="follow_buttons_<%= @user.id %> mx-[30px]">
               <%= render "relationships/btn", user: @user %>
             </div>
-            <!--ログインユーザーと管理者のみ表示-->
-            <% if @user.email != 'guestuser@example.com' && ( @user == current_user || current_user.admin? ) %>
+            <!--ログインユーザーのみ表示-->
+            <% if @user.email != 'guestuser@example.com' && ( @user == current_user ) %>
               <p class="absolute right-[10%]"><%= link_to "編集", edit_user_path(@user), class: "inline-flex items-center justify-center h-10 px-5 py-1.5 rounded-3xl border border-stone-500 hover:bg-stone-100 active:bg-stone-300" %></p>
             <% end %>
         </div>

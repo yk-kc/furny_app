@@ -1,10 +1,10 @@
 <% if current_user != user %>
   <% if current_user.following?(user) %>
-    <botton class="inline-flex items-center justify-center min-w-[130px] h-10 px-5 py-1.5 text-[15px] font-medium text-center text-black no-underline align-middle bg-stone-200 rounded-full cursor-pointer select-none hover:bg-stone-300 active:bg-stone-400 border border-stone-600">
+    <botton class="inline-flex items-center justify-center min-w-[90px] sm:min-w-[130px] h-10 sm:px-5 py-1.5 text-[12px] sm:text-[15px] font-medium text-center text-black no-underline align-middle bg-stone-200 rounded-full cursor-pointer select-none hover:bg-stone-300 active:bg-stone-400 border border-stone-600">
       <%= link_to "フォロー中", user_relationships_path(user.id), method: :delete, remote: true %>
     </botton>
   <% else %>
-    <botton class="inline-flex items-center justify-center min-w-[130px] h-10 px-5 py-1.5 text-[15px] font-medium text-center text-white no-underline align-middle bg-stone-400 rounded-full cursor-pointer select-none hover:bg-stone-500 active:bg-stone-600">
+    <botton class="inline-flex items-center justify-center min-w-[90px] sm:min-w-[130px] h-10 sm:px-5 py-1.5 text-[12px] sm:text-[15px] font-medium text-center text-white no-underline align-middle bg-stone-400 rounded-full cursor-pointer select-none hover:bg-stone-500 active:bg-stone-600">
       <%= link_to "フォローする", user_relationships_path(user.id), method: :post, remote: true %>
     </botton>
   <% end %>

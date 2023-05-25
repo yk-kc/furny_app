@@ -5,7 +5,10 @@
     <%= link_to "/" do %>
       <p class="font-shippori text-[32px] sm:text-6xl">Furny</p>
     <% end %>
+    <% if user_signed_in? %>
+    <% else %>
       <botton><%= link_to "ログイン", new_user_session_path, class: "font-gothic-new rounded-md bg-transparent px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-sky-500 hover:text-white hover:bg-sky-500 mr-3 sm:ml-5 sm:hidden" %></botton>
+    <% end %>
     </div>
   </div>
 </header>

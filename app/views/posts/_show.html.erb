@@ -1,6 +1,6 @@
-<div class="flex justify-start h-[90vh]">
+<div class="sm:flex sm:justify-start bg-white min-w-[312px]">
   <% if post.images.length < 2 %>
-    <div class="h-full aspect-square border-r border-zinc-200">
+    <div class="h-full aspect-square border-r border-zinc-200 my-auto">
       <% post.images.each do |image| %>
         <%= image_tag image, class: "w-full h-full relative top-0 bottom-0 right-0 left-0 object-contain transition-transform"%>
       <% end %>
@@ -26,18 +26,35 @@
     </div>
   <% end %>
 
-  <div class="flex flex-col grow w-[38%] min-w-[409px] max-w-min px-[15px] relative">
+  <div class="flex flex-col grow min-w-[314px] sm:min-w-[409px] h-[200px] sm:h-auto max-w-min px-[15px] overflow-y-auto mx-auto">
+    <div class="sm:hidden flex justify-between border-t border-b border-zinc-200 px-[3px] py-[3px]">
+        <div class="flex">
+          <div class="favorites_buttons_<%= post.id %>">
+            <%= render 'favorites/btn', post: post %>
+          </div>
+          <div class="flex ml-3">
+            <svg class="w-6 h-6 transition duration-75 mr-1.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"></path>
+            </svg>
+            <%= post.post_comments.count %>
+          </div>
+        </div>
+
+        <div class="bookmarks_buttons_<%= post.id %>">
+          <%= render 'bookmarks/btn', post: post %>
+        </div>
+      </div>
     <div class="flex items-center border-b border-zinc-200 py-[10px]">
       <%= link_to user_path(post.user) do %>
-        <%= image_tag post.user.get_profile_image(65,65), class: "rounded-full border border-stone-500" %>
+        <%= image_tag post.user.get_profile_image(65,65), class: "rounded-full border border-stone-500 w-[40px] h-[40px] sm:w-[65px] sm:h-[65px]" %>
       <% end %>
       <div class="mx-[15px]">
         <%= link_to user_path(post.user) do %>
-          <p class="text-[20px] font-medium"><%= post.user.name %></p>
-          <p class="text-[14px] text-neutral-500"><%= post.user.username %></p>
+          <p class="text-[15px] sm:text-[20px] font-medium"><%= post.user.name %></p>
+          <p class="text-[12px] sm:text-[14px] text-neutral-500"><%= post.user.username %></p>
         <% end %>
       </div>
-      <div class="follow_buttons_<%= post.user.id %>">
+      <div class="follow_buttons_<%= post.user.id %> ml-auto">
         <%= render 'relationships/btn', user: post.user %>
       </div>
     </div>
@@ -48,9 +65,9 @@
         </div>
       <% end %>
     </div>
-    <div class="overflow-auto flex flex-col grow pb-[20px]">
+    <div class="sm:overflow-auto flex flex-col grow sm:pb-[20px]">
       <div class="flex justify-between">
-        <p class="max-w-max text-[20px] font-medium border-b border-black pb-[4px] px-[8px] mt-[9px]"><%= post.furniture_name %></p>
+        <p class="max-w-max text-[16px] sm:text-[20px] font-medium border-b border-black pb-[4px] px-[8px] mt-[3px] sm:mt-[9px]"><%= post.furniture_name %></p>
         <div class="flex mt-[9px]">
           <% if post.user == current_user || current_user.admin? %>
             <%= link_to edit_post_path(post), class: "cursor-pointer mr-2" do %>
@@ -67,7 +84,7 @@
           <% end %>
         </div>
       </div>
-      <p class="p-[22px]"><%= post.caption %></p>
+      <p class="p-[12px] sm:p-[22px]"><%= post.caption %></p>
       <p class="text-right"><%= post.created_at.strftime('%Y/%m/%d') %></p>
 
       <div id="new-comments">
@@ -75,7 +92,7 @@
       </div>
     </div>
     <div class="flex flex-col mt-auto pb-[15px]">
-      <div class="flex justify-between border-t border-b border-zinc-200 px-[10px] py-[20px]">
+      <div class="hidden sm:flex justify-between border-t border-b border-zinc-200 px-[10px] py-[20px]">
         <div class="flex">
           <div class="favorites_buttons_<%= post.id %>">
             <%= render 'favorites/btn', post: post %>
@@ -101,3 +118,5 @@
 
 
 </div>
+<!--モーダル閉じるボタン-->
+<div id="modal-close" class="hidden">×</div>

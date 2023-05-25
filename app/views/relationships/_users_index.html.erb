@@ -1,23 +1,23 @@
 
-<table class='table'>
+<table class='table w-full mx-[10px]'>
   <tbody>
     <% users.each do |user| %>
       <tr>
         <td class="py-2">
           <%= link_to user_path(user) do %>
-            <%= image_tag user.get_profile_image(100,100), class: "rounded-full" %>
+            <%= image_tag user.get_profile_image(100,100), class: "rounded-full w-[65px] h-[65px] sm:w-[100px] sm:h-[100px]" %>
           <% end %>
         </td>
-        <td class="px-5 text-left">
+        <td class="px-2 sm:px-5 text-left">
           <%= link_to user_path(user) do %>
-            <p class="text-[20px] font-medium"><%= user.name %></p>
-            <p class="text-[15px]"><%= user.username %></p>
+            <p class="text-[15px] sm:text-[20px] font-medium"><%= user.name %></p>
+            <p class="text-[12px] sm:text-[15px] text-neutral-500"><%= user.username %></p>
           <% end %>
         </td>
-        <td class="px-2 text-[17px]"><span class="font-bold"><%= user.followings.count %></span> フォロー</td>
-        <td class="text-[17px]"><span class="font-bold"><%= user.followers.count %></span> フォロワー</td>
+        <td class="px-2 text-[17px] hidden lg:table-cell"><span class="font-bold"><%= user.followings.count %></span> フォロー</td>
+        <td class="text-[17px] hidden lg:table-cell"><span class="font-bold"><%= user.followers.count %></span> フォロワー</td>
         <td>
-          <div class="follow_buttons_<%= user.id %> mx-[30px]">
+          <div class="follow_buttons_<%= user.id %> sm:mx-[30px]">
             <%= render "relationships/btn", user: user %>
           </div>
         </td>

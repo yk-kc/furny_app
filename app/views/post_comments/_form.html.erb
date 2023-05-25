@@ -1,4 +1,4 @@
 <%= form_with(model:[post, post_comment], local: false) do |f| %>
-  <%= f.text_field :comment, rows:'5',placeholder: "コメントをここに", class: "border-none focus:ring-0 w-full my-[10px]" %>
-  <%= f.submit "送信する", class: "block ml-auto cursor-pointer" %>
+  <%= f.text_field :comment, rows:'5',placeholder: "コメントをここに", class: "border-none focus:ring-0 w-full my-[3px] sm:my-[10px]" %>
+  <%= f.submit "送信する", class: "block ml-auto text-[14px] sm:text-[16px] cursor-pointer" %>
 <% end %>

@@ -11,7 +11,7 @@
             <p class="mr-[14px] text-[17px] inline-block font-medium mt-[9px]"><%= post_comment.user.name %></p>
             <p class="mr-[14px] text-[15px] text-neutral-500 inline-block"><%= post_comment.user.username %></p>
           <% end %>
-          <p class="text-neutral-500 inline-block mb-[9px]"><%= time_ago_in_words(post_comment.created_at).upcase %></p>
+          <p class="text-neutral-500 inline-block mb-[9px]"><%= time_ago_in_words(post_comment.created_at).gsub(/約/, '').upcase %></p>
         </div>
 
         <div class="w-full flex justify-between mt-[9px]">

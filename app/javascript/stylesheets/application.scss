@@ -40,9 +40,10 @@
   z-index: 1;
 }
 
+
 #modal {
   position: fixed;   /* スクロールで移動しないようmodalの位置を固定します */
-  top: 5vh;
+  top: 7vh;
   /* 以下3行：モーダルを左右中央揃えにする方法 */
   left: 0;
   right: 0;
@@ -50,11 +51,20 @@
   transform: translate(0, 0) scale(1);
   transition: 0.2s;   /* transitionでアニメーションを作成 */
   z-index: 20;   /* マスクより上に重なるようにする */
-  max-width: fit-content;   /* showビューの幅に合わせて設定 */
+  max-width: 80%;   /* showビューの幅に合わせて設定 */
   max-height: 90%;
-  background-color: white;
-  // min-width: 1248px;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 13 / 9;
+}
+
+#modal-close{
+	position: fixed;
+	top: -35px;
+	right: -40px;
+	width: 40px;
+	height: 40px;
+	font-size: 33px;
+	color: #fff;
+	cursor: pointer;
 }
 
 /* hiddenクラスで最初は表示されないようにする */
@@ -94,7 +104,6 @@
 
 // posts/search
 .tab {
-  width: 200px;
   padding: 10px 20px;
   text-align: center;
   display: inline-block;

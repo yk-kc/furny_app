@@ -7,10 +7,19 @@ var mask = document.getElementById('mask');
 <!--部分テンプレートを指定-->
 modal.innerHTML = '<%= escape_javascript(render partial: 'posts/show', locals: { post: @post, post_comment: @post_comment }) %>';
 
+<!--閉じるボタンを取得-->
+var close = document.getElementById('modal-close');
+
 <!--hiddenクラスを消してモーダルとマスクを表示させます。-->
 modal.classList.remove('hidden');
 mask.classList.remove('hidden');
+close.classList.remove('hidden');
 
+<!--閉じるボタンをクリックしたらモーダルを閉じる-->
+close.addEventListener('click', () => {
+  modal.classList.add('hidden');
+  mask.classList.add('hidden');
+  });
 
 <!--モーダルの外側（マスク）をクリックするとhiddenクラスが書き込まれ、モーダルとマスクが再び非表示となります。-->
 mask.addEventListener('click', () => {
