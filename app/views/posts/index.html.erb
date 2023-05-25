@@ -10,13 +10,13 @@
 
   <div class="w-full text-center">
     <%= form_with(url: search_posts_path, local: true, method: :get, class: "w-full") do |f| %>
-      <%= f.text_field :keyword, placeholder: "ユーザーを入力、キーワードを入力", id: 'Search_Form', class: "w-[30vw] h-[30px] text-black rounded-[5px] border-[#008bbb]" %>
+      <%= f.text_field :keyword, placeholder: "ユーザーを入力、キーワードを入力", id: 'Search_Form', class: "w-[60vw] md:w-[30vw] h-[30px] text-black rounded-[5px] border-[#008bbb]" %>
       <%= f.submit "検索", class: "ml-3 inline-flex items-center justify-center px-[9px] py-1 text-base font-medium leading-6 text-gray-600 whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none" %>
 
     <% end %>
   </div>
-  <div class="w-full flex justify-center mt-2">
-    <div class="pt-[30px] pr-[63px]">
+  <div class="w-full lg:flex lg:justify-center mt-2">
+    <div class="pt-[30px] text-center lg:pr-[63px]">
       <%= form_tag category_result_posts_path, method: :get, class: 'boards__searchForm' do %>
         <%= select_tag :category_id,
                        options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
@@ -27,7 +27,7 @@
         %>
       <% end %>
     </div>
-    <div class="flex flex-wrap w-[320px]">
+    <div class="flex flex-wrap w-[320px] mx-auto lg:mr-0 lg:ml-0">
     <%#= form_tag({controller:"posts",action:"tag_result"}, method: :get) do %>
       <%= form_tag tag_result_posts_path, method: :get do %>
         <% Tag.all.each do |t| %>
