@@ -88,7 +88,8 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:furniture_name, :caption, :category_id, tag_ids: []).merge(images: uploaded_images) # 複数画像、複数タグなので配列で受け取る
+  # 複数タグなので配列で受け取る
+    params.require(:post).permit(:furniture_name, :caption, :category_id, tag_ids: []).merge(images: uploaded_images)
   end
 
   def uploaded_images

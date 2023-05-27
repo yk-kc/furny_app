@@ -11,7 +11,7 @@
     <div class="images-field clearfix">
       <div class="field mb-3">
         <p class="mb-1"><%= f.label :images, "画像", class: "font-semibold p-1" %> ( 5枚まで )</p>
-        <div id="dropzone" class="file-input-dropzone w-[250px] h-[85px] bg-stone-200 outline-dashed outline-2 outline-gray-400 rounded-[20px] my-[10px] mx-auto cursor-pointer">
+        <div id="dropzone" class="file-input-dropzone w-[250px] h-[85px] bg-stone-200 outline-dashed outline-2 outline-gray-400 rounded-[20px] my-[10px] mx-auto cursor-pointer hidden md:block">
             <svg class="mx-auto text-neutral-500" fill="none" stroke="currentColor" width="45" height="40" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
             </svg>
@@ -40,9 +40,6 @@
         <% end %>
       </div>
     </div>
-    <!--<div id="new-image" class="flex flex-wrap justify-center">-->
-
-    <!--</div>-->
 
     <div class="mb-3">
       <%= f.label :furniture_name, "タイトル", class: "font-semibold block p-1" %>
@@ -54,12 +51,12 @@
         <%= f.text_area :caption, placeholder: "キャプション...", class: "w-[265px] xl:w-[18vw] text-black rounded-[5px]" %>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
       <%= f.label :category_id, "カテゴリ", class: "font-semibold block p-1" %>
       <%= f.collection_select :category_id, Category.all, :id, :name, { :include_blank => "選択してください ▼" }, :required => true, class: "cursor-pointer" %>
     </div>
 
-    <div class='form-group'>
+    <div class='mb-3'>
       <%= f.label :tag, "カラー", class: "font-semibold inline-block p-1" %>
       <span> (複数チェック可)</span>
       <div class="flex flex-wrap w-[315px] mx-auto">
