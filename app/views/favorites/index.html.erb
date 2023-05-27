@@ -2,7 +2,7 @@
 
 <div class="font-gothic-new w-full h-full flex flex-wrap justify-center">
   <div class="w-full">
-    <div class="flex sm:justify-center w-full pt-[25px] pb-[5px] lg:py-[40px] pl-[8px] sm:pl-0">
+    <div class="flex sm:justify-center w-full pt-[25px] lg:py-[40px] pl-[8px] sm:pl-0">
       <div class="min-w-[90px] min-h-[90px] sm:min-w-[150px] sm:min-h-[150px] lg:min-w-[180px] lg:min-h-[180px]">
         <%= image_tag @user.get_profile_image(180,180), class: "rounded-full  border border-stone-500 w-[90px] h-[90px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px]" %>
       </div>
@@ -43,7 +43,7 @@
       </div>
     </div>
   </div>
-  <p class="text-center lg:hidden mb-[17px]"><%= @user.introduction %></p>
+  <p class="text-center w-full lg:hidden mb-[17px]"><%= @user.introduction %></p>
   <!--ログインユーザーのみ表示-->
   <% if @user == current_user %>
     <div class="w-full flex justify-center mb-8">
