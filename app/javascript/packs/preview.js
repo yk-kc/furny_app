@@ -1,4 +1,33 @@
 $(document).ready(function() {
+  // ドラッグアンドドロップエリアのイベントリスナーを追加
+  var dropzone = document.getElementById('dropzone');
+  dropzone.addEventListener('dragover', handleDragOver, false);
+  dropzone.addEventListener('drop', handleFileSelect, false);
+
+  // ドラッグオーバー時のイベントハンドラ
+  function handleDragOver(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'copy';
+  }
+
+  // ドロップ時のイベントハンドラ
+  function handleFileSelect(event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    var files = event.dataTransfer.files;
+    var d = (new $.Deferred()).resolve();
+
+    $.each(files, function(i, file) {
+      d = d.then(function() {
+        return Uploader.upload(file);
+      }).then(function(data) {
+        return previewImage(file, data.image_id);
+      });
+    });
+  }
+
   $('#post_images').on('change',function(e){
     var files = e.target.files;
     var d = (new $.Deferred()).resolve();

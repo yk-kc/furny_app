@@ -5,13 +5,25 @@
 
     <%= render 'layouts/errors', obj: @post %>
 
-    <h1 class="text-center w-48 bg-stone-200 px-8 py-3 mx-auto mt-2 mb-5">画像投稿フォーム</h1>
+    <h1 class="text-center w-[195px] border rounded-lg px-8 py-3 mx-auto mt-2 mb-5">画像投稿フォーム</h1>
     <%= form_with model: @post, local: true do |f| %>
 
     <div class="images-field clearfix">
       <div class="field mb-3">
         <p class="mb-1"><%= f.label :images, "画像", class: "font-semibold p-1" %> ( 5枚まで )</p>
-        <%= f.file_field :images, multiple: true, accept: "image/*", class: "file-input" %>
+        <div id="dropzone" class="file-input-dropzone w-[250px] h-[85px] bg-stone-200 outline-dashed outline-2 outline-gray-400 rounded-[20px] my-[10px] mx-auto cursor-pointer">
+            <svg class="mx-auto text-neutral-500" fill="none" stroke="currentColor" width="45" height="40" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+            </svg>
+          <p class="dropzone-text text-gray-600 text-sm">
+            ここにファイルを<br>ドラッグアンドドロップできます
+          </p>
+        </div>
+        <label class="mt-2 sm:mt-0 py-2 w-[212px] sm:w-[164px] h-8 border border-sky-800 bg-white text-stone-700 rounded-[3px] text-sm flex justify-center items-center cursor-pointer mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13"><path data-name="パス 204" d="M16.5 11.167a1.4 1.4 0 0 1-1.455 1.333H1.955A1.4 1.4 0 0 1 .5 11.167V3.833A1.4 1.4 0 0 1 1.955 2.5h2.909l1.455-2h4.364l1.455 2h2.909s1.453.6 1.453 1.333Z" fill="none" stroke="#57534e" stroke-linecap="round" stroke-linejoin="round"/><path data-name="パス 205" d="M12.426 6.915a3.926 3.926 0 0 1-7.852 0 4.007 4.007 0 0 1 3.393-3.89 2.844 2.844 0 0 1 .533-.036 3.926 3.926 0 0 1 3.926 3.926Z" fill="none" stroke="#57534e" stroke-linecap="round" stroke-linejoin="round"><g><g><svg>
+          <span class="ml-5">画像を選択する</span>
+          <%= f.file_field :images, multiple: true, accept: "image/*", class: "file-input hidden" %>
+        </label>
       </div>
       <div id="new-image" class="flex flex-wrap justify-center">
         <% if @post.images.attached? %>
@@ -68,7 +80,7 @@
       </div>
     </div>
 
-    <botton><%= f.submit '投稿', class: "bg-gray-500 hover:bg-gray-400 text-white rounded-xl px-16 py-2 mt-5 cursor-pointer" %></botton>
+    <botton><%= f.submit '投稿', class: "bg-gray-500 hover:bg-gray-400 text-white rounded-xl px-16 py-2 mt-10 cursor-pointer" %></botton>
   <% end %>
   </div>
 </div>
