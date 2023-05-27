@@ -78,10 +78,28 @@ class PostsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def upload_image
+    @image_blob = create_blob(params[:image])
+    respond_to do |format|
+      format.json { @image_blob.id }
+    end
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:furniture_name, :caption, :category_id, images: [], tag_ids: []) # 複数画像、複数タグなので配列で受け取る
+    params.require(:post).permit(:furniture_name, :caption, :category_id, tag_ids: []).merge(images: uploaded_images) # 複数画像、複数タグなので配列で受け取る
+  end
+
+  def uploaded_images
+    params[:post][:images].map{|id| ActiveStorage::Blob.find(id)} if params[:post][:images]
+  end
+
+  def create_blob(uploading_file)
+    ActiveStorage::Blob.create_after_upload! \
+      io: uploading_file.open,
+      filename: uploading_file.original_filename,
+      content_type: uploading_file.content_type
   end
 
   def ensure_user

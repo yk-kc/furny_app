@@ -8,13 +8,29 @@
     <h1 class="text-center w-48 bg-stone-200 px-8 py-3 mx-auto mt-2 mb-5">画像投稿フォーム</h1>
     <%= form_with model: @post, local: true do |f| %>
 
-    <div class="mb-3">
-      <p class="mb-1"><%= f.label :images, "画像", class: "font-semibold p-1" %> ( 5枚まで )</p>
-      <%= f.file_field :images, multiple: true, required: true, accept: "image/*" %>
+    <div class="images-field clearfix">
+      <div class="field mb-3">
+        <p class="mb-1"><%= f.label :images, "画像", class: "font-semibold p-1" %> ( 5枚まで )</p>
+        <%= f.file_field :images, multiple: true, accept: "image/*", class: "file-input" %>
+      </div>
+      <div id="new-image" class="flex flex-wrap justify-center">
+        <% if @post.images.attached? %>
+          <% @post.images.each do |image| %>
+            <div class="image-box">
+              <%= image_tag image.variant(resize: "150x150") %>
+              <p> <%= image.filename %> </p>
+              <%= form.hidden_field :images , name: "post[images][]", value: "#{image.blob.id}", style: "display: none;", class: "post-images-input" %>
+              <%= link_to "Edit", "", class: "btn-edit mr-[73px] border rounded-full py-[2px] px-[10px]" %>
+              <%= file_field "edit-image","" , class: "edit-image-file-input file-input", style: "display: none;"%>
+              <%= link_to "Delete", "", class: "btn-delete" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-    <div id="new-image" class="flex flex-wrap justify-center">
+    <!--<div id="new-image" class="flex flex-wrap justify-center">-->
 
-    </div>
+    <!--</div>-->
 
     <div class="mb-3">
       <%= f.label :furniture_name, "タイトル", class: "font-semibold block p-1" %>

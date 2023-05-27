@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'posts/upload_image' => 'posts#upload_image'
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create , :destroy]
     resource :bookmarks, only: [:create , :destroy]
