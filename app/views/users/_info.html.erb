@@ -15,7 +15,7 @@
               <%= render "relationships/btn", user: user %>
             </div>
             <% if current_user.admin? %>
-              <p class="ml-auto mr-[5px]">
+              <p class="ml-auto mr-[5px] text-[13px] md:hidden">
                 <%= link_to "管理者", users_path %>
               </p>
             <% end %>
