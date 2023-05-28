@@ -33,6 +33,8 @@ class PostsController < ApplicationController
       @categories = Category.find(category_id).posts.
                              page(params[:page]).per(12).
                              order(created_at: :desc)
+      # .pluckは特定のカラムのみを配列で取り出せるメソッド
+      # .uniqは重複レコードを1つにまとめて取得できる
       target_tag_ids = PostTagRelation.where(post_id: Category.find(category_id).posts.ids).
                                        pluck(:tag_id).uniq.sort
       @tag_names = Tag.find(target_tag_ids).pluck(:name)
@@ -46,8 +48,16 @@ class PostsController < ApplicationController
     @selected_color = params[:tag_ids].select {|k,v| v == "1"}.keys
     if params[:tag_ids]
       @posts = []
-      params[:tag_ids].each do |key, value|
-        @posts += Tag.find_by(name: key).posts.where(category_id: params[:category_id]) if value == "1"
+      # カテゴリー検索結果一覧から色タグ検索
+      if params[:category_id]
+        params[:tag_ids].each do |key, value|
+          @posts += Tag.find_by(name: key).posts.where(category_id: params[:category_id]) if value == "1"
+        end
+      else
+        # 投稿一覧から色タグ検索
+        params[:tag_ids].each do |key, value|
+          @posts += Tag.find_by(name: key).posts if value == "1"
+        end
       end
       @posts.uniq!
       @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
