@@ -1,34 +1,51 @@
-<!--モーダルを取得-->
+// モーダルの中身をshowビューに置き換える
 var modal = document.getElementById('modal');
-<!--マスクを取得-->
-var mask = document.getElementById('mask');
-
-<!--モーダルの中身をshowビューに置き換え-->
-<!--部分テンプレートを指定-->
 modal.innerHTML = '<%= escape_javascript(render partial: 'posts/show', locals: { post: @post, post_comment: @post_comment }) %>';
 
-<!--閉じるボタンを取得-->
+// モーダル要素とマスク要素を取得
+var modalElement = document.getElementById('modal');
+var maskElement = document.getElementById('mask');
+// 閉じるボタンを取得
 var close = document.getElementById('modal-close');
+console.log(close);
 
-<!--hiddenクラスを消してモーダルとマスクを表示させます。-->
-modal.classList.remove('hidden');
-mask.classList.remove('hidden');
-close.classList.remove('hidden');
-
-<!--閉じるボタンをクリックしたらモーダルを閉じる-->
+// 閉じるボタンをクリックしたらモーダルを閉じる
 close.addEventListener('click', () => {
+
   modal.classList.add('hidden');
   mask.classList.add('hidden');
   });
 
-<!--モーダルの外側（マスク）をクリックするとhiddenクラスが書き込まれ、モーダルとマスクが再び非表示となります。-->
-mask.addEventListener('click', () => {
-  modal.classList.add('hidden');
-  mask.classList.add('hidden');
-  });
+// モーダルを表示する関数
+function openModal() {
+  modalElement.classList.remove('hidden');
+  maskElement.classList.remove('hidden');
+  close.classList.remove('hidden');
+  document.body.classList.add('no-scroll');
+}
 
+// モーダルを閉じる関数
+function closeModal() {
+  modalElement.classList.add('hidden');
+  maskElement.classList.add('hidden');
+  document.body.classList.remove('no-scroll');
+}
+
+// 閉じるボタンをクリックしたらモーダルを閉じる
+var close = document.getElementById('modal-close');
+close.addEventListener('click', closeModal);
+
+// モーダルの外側（マスク）をクリックするとモーダルを閉じる
+maskElement.addEventListener('click', closeModal);
+
+// モーダルの背景でのクリックイベントをキャプチャして無効化
+maskElement.addEventListener('click', function(event) {
+  event.stopPropagation();
+});
+
+// swiperの記述
 var swiper = new Swiper('.swiper', {
-  <!--// Optional parameters-->
+  // Optional parameters
   loop: true,
 
   // If we need pagination
@@ -42,3 +59,7 @@ var swiper = new Swiper('.swiper', {
     prevEl: '.swiper-button-prev',
   },
 })
+
+
+// モーダルを開く処理
+openModal();

@@ -75,6 +75,10 @@
   }
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 /* hiddenクラスがないとマスクとモーダルが表示される（JavaScriptでhiddenクラスを消したとき）*/
 #mask {
   background-color: rgba(0, 0, 0, 0.5);
@@ -125,6 +129,7 @@
   transform: translate(0, 0) scale(0.8);   /* 大きさ0.8倍から等倍にモーダルが拡大される */
 }
 
+// swiper
 .swiper-pagination-bullet {
   background-color: gray;
 }
@@ -134,6 +139,7 @@
  display: none;
 }
 
+// 色タグ
 .balloon:hover .tag-text {
   display: inline;
 }
@@ -148,7 +154,7 @@
   position: absolute;                /* 親要素を基準 */
 }
 
-// posts/search
+// posts/searchのタブ切り替え
 .tab {
   padding: 10px 20px;
   text-align: center;
