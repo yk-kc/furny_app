@@ -5,6 +5,7 @@
   <div class="w-full text-center mt-10 mb-8">
 
     <p class="mb-2">検索結果 <%= @posts.count %> 件</p>
+    <% # ["レッド", "ブルー", "グリーン"]  %>
     <% @selected_color.each do |color| %>
       <div class="balloon relative w-[30px] h-3 inline-block border border-zinc-300 mr-2 align-middle" style="background-color: <%= Constants::COLOR_MAP[color.to_sym] %>;">
         <span class="tag-text absolute hidden p-[2px] bg-zinc-200 w-[95px] text-center text-[80%] left-[30%] bottom-[100%] mb-[12px] rounded-lg"><%= color %></span>

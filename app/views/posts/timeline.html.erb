@@ -14,7 +14,9 @@
 
       <div class="w-80 h-80 border-b border-black">
         <%= link_to post_path(post), remote: true do %>
-          <%= image_tag post.images[0], class: "w-full h-full object-cover" %>
+          <% if post.images.attached? %>
+            <%= image_tag post.images[0], class: "w-full h-full object-cover" %>
+          <% end %>
         <% end %>
       </div>
 

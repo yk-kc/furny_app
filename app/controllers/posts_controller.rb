@@ -27,8 +27,19 @@ class PostsController < ApplicationController
   end
 
   def category_result
-    @categories = params[:category_id].present? ? Category.find(params[:category_id]).posts.page(params[:page]).per(12).order(created_at: :desc) : Post.all
-    @category = Category.find(params[:category_id])
+    category_id = params[:category_id]
+    if  category_id.present?
+      @category = Category.find(category_id)
+      @categories = Category.find(category_id).posts.
+                             page(params[:page]).per(12).
+                             order(created_at: :desc)
+      target_tag_ids = PostTagRelation.where(post_id: Category.find(category_id).posts.ids).
+                                       pluck(:tag_id).uniq.sort
+      @tag_names = Tag.find(target_tag_ids).pluck(:name)
+    else
+      @posts = Post.all.page(params[:page]).per(12).order(created_at: :desc)
+      render :index
+    end
   end
 
   def tag_result
@@ -36,7 +47,7 @@ class PostsController < ApplicationController
     if params[:tag_ids]
       @posts = []
       params[:tag_ids].each do |key, value|
-        @posts += Tag.find_by(name: key).posts if value == "1"
+        @posts += Tag.find_by(name: key).posts.where(category_id: params[:category_id]) if value == "1"
       end
       @posts.uniq!
       @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(12)
@@ -73,6 +84,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    @post.images.purge
     @post.destroy
     flash[:notice] = "投稿を削除しました"
     redirect_to user_path(current_user)

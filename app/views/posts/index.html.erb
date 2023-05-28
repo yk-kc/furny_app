@@ -28,7 +28,6 @@
       <% end %>
     </div>
     <div class="flex flex-wrap w-[320px] mx-auto lg:mr-0 lg:ml-0">
-    <%#= form_tag({controller:"posts",action:"tag_result"}, method: :get) do %>
       <%= form_tag tag_result_posts_path, method: :get do %>
         <% Tag.all.each do |t| %>
             <%= check_box :tag_ids, t.name %>
@@ -36,7 +35,7 @@
             <span class="tag-text absolute hidden p-[2px] bg-zinc-200 w-[95px] text-center text-[80%] left-[30%] bottom-[100%] mb-[12px] rounded-lsg"><%= t.name %></span>
           </div>
         <% end %>
-        <%= submit_tag '色検索', class: "inline-flex items-center justify-center px-[9px] text-base font-medium leading-6 text-gray-600 whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none" %>
+        <%= submit_tag '色検索', class: "inline-flex items-center justify-center px-[9px] text-base font-medium leading-6 text-gray-600 whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none cursor-pointer" %>
       <% end %>
     </div>
   </div>

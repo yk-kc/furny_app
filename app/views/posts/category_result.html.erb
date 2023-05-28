@@ -2,6 +2,19 @@
 
 <div class="font-gothic-new w-full h-full flex flex-wrap justify-center">
 
+  <div class="flex flex-wrap w-[320px] mx-auto lg:mr-0 lg:ml-0 mt-10">
+      <%= form_tag tag_result_posts_path, method: :get do %>
+          <% @tag_names.each do |name| %>
+            <%= check_box :tag_ids, name %>
+            <div class="balloon relative w-[30px] h-3 inline-block border border-zinc-300 mr-2 align-middle" style="background-color: <%= Constants::COLOR_MAP[name.to_sym] %>;">
+              <span class="tag-text absolute hidden p-[2px] bg-zinc-200 w-[95px] text-center text-[80%] left-[30%] bottom-[100%] mb-[12px] rounded-lsg"><%= name %></span>
+            </div>
+          <% end %>
+          <%= hidden_field_tag :category_id, params[:category_id] %>
+        <%= submit_tag '色検索', class: "block mx-auto items-center justify-center px-[9px] text-base font-medium leading-6 text-gray-600 whitespace-no-wrap bg-white border border-gray-200 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:shadow-none cursor-pointer" %>
+      <% end %>
+    </div>
+
   <div class="w-full text-center mt-10 mb-8">
     <p>検索結果 <%= @categories.count %> 件</p>
     <p><%= @category.name %></p>
