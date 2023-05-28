@@ -11,6 +11,7 @@ import "stylesheets/application.scss"
 import '@fortawesome/fontawesome-free/js/all'
 import './preview'
 import './search'
+import './top'
 import 'jquery'
 
 Rails.start()
