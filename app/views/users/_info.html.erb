@@ -14,9 +14,16 @@
             <div class="follow_buttons_<%= user.id %> ml-auto sm:mx-[30px]">
               <%= render "relationships/btn", user: user %>
             </div>
+            <% if current_user.admin? %>
+              <p class="ml-auto mr-[5px]">
+                <%= link_to "管理者", users_path %>
+              </p>
+            <% end %>
             <!--ログインユーザーのみ表示-->
             <% if user.email != 'guestuser@example.com' && ( user == current_user ) %>
-              <p class="ml-auto mr-[5px]"><%= link_to "編集", edit_user_path(user), class: "inline-flex items-center justify-center text-[13px] sm:text-[16px] sm:h-10 px-[13px] py-1 sm:px-5 sm:py-1.5 whitespace-nowrap rounded-3xl border border-stone-500 hover:bg-stone-100 active:bg-stone-300" %></p>
+              <p class="ml-auto mr-[5px]">
+                <%= link_to "編集", edit_user_path(user), class: "inline-flex items-center justify-center text-[13px] sm:text-[16px] sm:h-10 px-[13px] py-1 sm:px-5 sm:py-1.5 whitespace-nowrap rounded-3xl border border-stone-500 hover:bg-stone-100 active:bg-stone-300" %>
+              </p>
             <% end %>
         </div>
 
