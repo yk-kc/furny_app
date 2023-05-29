@@ -48,33 +48,6 @@
   padding: 0 3px;
 }
 
-@media (min-width: 640px) {
-  .image-box{
-    width: 250px;
-    height: 300px;
-    margin: 2px 4px;
-    display: inline-block;
-    img{
-      width: 100%;
-      height: 250px;
-      border: 1px solid;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
-  }
-  .btn-edit {
-    margin-right: 73px;
-    padding: 0 10px;
-    border:1px solid #d5d2d2;
-    border-radius: 13px;
-  }
-  .btn-delete {
-    padding: 0 10px;
-    border:1px solid #d5d2d2;
-    border-radius: 13px;
-  }
-}
-
 .no-scroll {
   overflow: hidden;
 }
@@ -92,23 +65,23 @@
 
 #modal {
   position: fixed;   /* スクロールで移動しないようmodalの位置を固定します */
-  top: 7vh;
+  top: 50%;
   /* 以下3行：モーダルを左右中央揃えにする方法 */
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  transform: translate(0, 0) scale(1);
-  transition: 0.2s;   /* transitionでアニメーションを作成 */
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  transition: opacity 0.5s ease-out;
   z-index: 20;   /* マスクより上に重なるようにする */
-  max-width: 87%;   /* showビューの幅に合わせて設定 */
-  max-height: 90%;
-  aspect-ratio: 13 / 9;
+  width: 90%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #modal-close{
 	position: fixed;
 	top: -40px;
-	right: -35px;
+	right: -27px;
 	width: 40px;
 	height: 40px;
 	font-size: 33px;
@@ -173,4 +146,38 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .image-box{
+    width: 250px;
+    height: 300px;
+    margin: 2px 4px;
+    display: inline-block;
+    img{
+      width: 100%;
+      height: 250px;
+      border: 1px solid;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+  }
+  .btn-edit {
+    margin-right: 73px;
+    padding: 0 10px;
+    border:1px solid #d5d2d2;
+    border-radius: 13px;
+  }
+  .btn-delete {
+    padding: 0 10px;
+    border:1px solid #d5d2d2;
+    border-radius: 13px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #modal {
+    width: 70%;
+    height: 90%;
+  }
 }

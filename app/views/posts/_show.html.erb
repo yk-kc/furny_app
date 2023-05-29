@@ -1,8 +1,9 @@
-<div class="sm:flex sm:justify-start bg-white min-w-[312px]">
+<div class="md:flex md:justify-start bg-white min-w-[324px] w-full h-full">
+  <div class="md:w-[65%]">
   <% if post.images.length < 2 %>
-    <div class="h-full aspect-square border-r border-zinc-200 my-auto">
+    <div class="h-full w-full aspect-square border-r border-zinc-200 my-auto">
       <% post.images.each do |image| %>
-        <%= image_tag image, class: "w-full h-full relative top-0 bottom-0 right-0 left-0 object-contain transition-transform"%>
+        <%= image_tag image, class: "w-full h-full object-contain transition-transform"%>
       <% end %>
     </div>
   <% else %>
@@ -12,7 +13,7 @@
       <div class="swiper-wrapper">
         <!-- Slides -->
         <% post.images.each do |image| %>
-          <%= image_tag image, class: "swiper-slide absolute top-0 bottom-0 right-0 left-0 object-contain" %>
+          <%= image_tag image, class: "swiper-slide object-contain" %>
         <% end %>
       </div>
       <!-- pagination -->
@@ -25,9 +26,9 @@
       <!--<div class="swiper-button-next"></div>-->
     </div>
   <% end %>
-
-  <div class="flex flex-col grow min-w-[324px] w-auto sm:min-w-[409px] h-[190px] sm:h-auto px-[15px] overflow-y-auto mx-auto">
-    <div class="sm:hidden flex justify-between border-t border-b border-zinc-200 px-[3px] py-[3px]">
+  </div>
+  <div class="flex flex-col grow min-w-[324px] md:min-w-[auto] md:w-[35%] h-[190px] md:h-auto px-[15px] overflow-y-auto mx-auto">
+    <div class="md:hidden flex justify-between border-t border-b border-zinc-200 px-[3px] py-[3px]">
         <div class="flex">
           <div class="favorites_buttons_<%= post.id %>">
             <%= render 'favorites/btn', post: post %>
@@ -65,9 +66,9 @@
         </div>
       <% end %>
     </div>
-    <div class="sm:overflow-auto flex flex-col grow sm:pb-[20px]">
+    <div class="md:overflow-auto flex flex-col grow sm:pb-[20px]">
       <div class="flex justify-between">
-        <p class="max-w-max text-[16px] sm:text-[20px] font-medium border-b border-black pb-[4px] px-[8px] mt-[3px] sm:mt-[9px]"><%= post.furniture_name %></p>
+        <p class="max-w-max text-[16px] md:text-[20px] font-medium border-b border-black pb-[4px] px-[8px] mt-[3px] md:mt-[9px]"><%= post.furniture_name %></p>
         <div class="flex mt-[9px]">
           <% if post.user == current_user || current_user.admin? %>
             <%= link_to edit_post_path(post), class: "cursor-pointer mr-2" do %>
@@ -84,7 +85,7 @@
           <% end %>
         </div>
       </div>
-      <p class="p-[12px] sm:p-[22px]"><%= post.caption %></p>
+      <p class="p-[12px] md:p-[22px]"><%= post.caption %></p>
       <p class="text-right"><%= post.created_at.strftime('%Y/%m/%d') %></p>
 
       <div id="new-comments">
@@ -92,7 +93,7 @@
       </div>
     </div>
     <div class="flex flex-col mt-auto pb-[15px]">
-      <div class="hidden sm:flex justify-between border-t border-b border-zinc-200 px-[10px] py-[20px]">
+      <div class="hidden md:flex justify-between border-t border-b border-zinc-200 px-[10px] py-[20px]">
         <div class="flex">
           <div class="favorites_buttons_<%= post.id %>">
             <%= render 'favorites/btn', post: post %>
