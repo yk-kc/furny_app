@@ -12,6 +12,7 @@ import '@fortawesome/fontawesome-free/js/all'
 import './preview'
 import './search'
 import './top'
+import './prof_edit'
 import 'jquery'
 
 Rails.start()
