@@ -84,7 +84,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
+    if @post.update(post_edit_params)
       flash[:notice] = "投稿を編集しました"
       redirect_to post_path(@post)
     else
@@ -112,6 +112,10 @@ class PostsController < ApplicationController
   def post_params
   # 複数タグなので配列で受け取る
     params.require(:post).permit(:furniture_name, :caption, :category_id, tag_ids: []).merge(images: uploaded_images)
+  end
+
+  def post_edit_params
+    params.require(:post).permit(:furniture_name, :caption, :category_id, tag_ids: [])
   end
 
   def uploaded_images
