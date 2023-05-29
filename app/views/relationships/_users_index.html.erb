@@ -14,8 +14,16 @@
             <p class="text-[12px] sm:text-[15px] text-neutral-500"><%= user.username %></p>
           <% end %>
         </td>
-        <td class="px-2 text-[17px] hidden lg:table-cell"><span class="font-bold"><%= user.followings.count %></span> フォロー</td>
-        <td class="text-[17px] hidden lg:table-cell"><span class="font-bold"><%= user.followers.count %></span> フォロワー</td>
+        <td class="px-2 text-[17px] hidden lg:table-cell">
+          <div id="followings_count_<%= user.id %>">
+            <span class="font-bold"><%= user.followings.count %></span> フォロー
+          </div>
+        </td>
+        <td class="text-[17px] hidden lg:table-cell">
+          <div id="followers_count_<%= user.id %>">
+            <span class="font-bold"><%= user.followers.count %></span> フォロワー
+          </div>
+        </td>
         <td>
           <div class="follow_buttons_<%= user.id %> sm:mx-[30px]">
             <%= render "relationships/btn", user: user %>

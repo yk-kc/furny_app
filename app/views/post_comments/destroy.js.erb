@@ -1,1 +1,3 @@
 $('#new-comments').html("<%= j(render 'post_comments/index', post: @post) %>");
+
+$('.comments_buttons').html("<%= j(render 'post_comments/btn', post: @post) %>");

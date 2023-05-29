@@ -1,3 +1,7 @@
 $('.follow_buttons_<%= @user.id %>').each(function(index,element){
   $(element).html("<%= j(render "relationships/btn", user: @user) %>");
 });
+
+$("#followings_count_<%= current_user.id %>").html('<span class="font-bold"><%= current_user.followings.count %></span> フォロー');
+
+$("#followers_count_<%= @user.id %>").html('<span class="font-bold"><%= @user.followers.count %></span> フォロワー');
