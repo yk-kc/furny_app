@@ -22,7 +22,7 @@
         <% else %>
           <span>
             <%= link_to post_path(notification.post), remote: true do %>
-              <%= image_tag notification.post.user.get_profile_image(50,50), class: "rounded-full" %>
+              <%= image_tag notification.post.user.get_profile_image(50,50), class: "rounded-full inline-block" %>
               <strong><%= notification.post.user.name + 'さんの投稿' %></strong>
             <% end %>
           </span>
