@@ -42,6 +42,10 @@ maskElement.addEventListener('click', function(event) {
   event.stopPropagation();
 });
 
+// モーダルを開く処理
+openModal();
+
+
 // swiperの記述
 var swiper = new Swiper('.swiper', {
   // Optional parameters
@@ -58,7 +62,3 @@ var swiper = new Swiper('.swiper', {
     prevEl: '.swiper-button-prev',
   },
 })
-
-
-// モーダルを開く処理
-openModal();

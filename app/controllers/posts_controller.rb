@@ -86,7 +86,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.update(post_edit_params)
       flash[:notice] = "投稿を編集しました"
-      redirect_to post_path(@post)
+      redirect_to user_path(current_user)
     else
       render :edit
     end
