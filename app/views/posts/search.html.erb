@@ -16,6 +16,9 @@
     <div class="panel active">
        <p class="w-full text-center"><%= @users.count %> 件</p>
       <%= render 'relationships/users_index', users: @users %>
+      <div class="w-full text-center mt-10">
+        <%= paginate @users %>
+      </div>
     </div>
     <div class="panel">
        <p class="w-full text-center"><%= @posts.count %> 件</p>

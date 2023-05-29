@@ -8,6 +8,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&family=Zen+Kaku+Gothic+New&display=swap');
 
+
+// スクロールバー非表示
+.scroll-display {
+  // IE(Internet Explorer)・Microsoft Edgeへの対応
+  -ms-overflow-style: none;
+  // Firefoxへの対応
+
+  scrollbar-width: none;
+}
+// Google Chrome、Safariへの対応
+.scroll-display::-webkit-scrollbar {
+  display: none;
+}
+
 .font-shippori {
   font-family: 'Shippori Mincho B1', serif;
 }

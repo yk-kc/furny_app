@@ -3,7 +3,7 @@
 <div class="font-gothic-new w-full h-full flex flex-wrap justify-center">
   <% if @categories.count === 0 %>
   <% else %>
-    <div class="flex flex-wrap w-[320px] mx-auto lg:mr-0 lg:ml-0 mt-10">
+    <div class="flex flex-wrap justify-center w-[320px] mx-auto lg:mr-0 lg:ml-0 mt-10">
       <%= form_tag tag_result_posts_path, method: :get do %>
         <% @tag_names.each do |name| %>
           <%= check_box :tag_ids, name %>
