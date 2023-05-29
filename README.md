@@ -1,4 +1,9 @@
-# Furny(Furniture Harmony)
+# Furny
+
+![スクリーンショット 2023-05-29 164057](https://github.com/yk-kc/furny_app/assets/124197100/e570dc4c-a205-4cce-a26e-17efc54aafc4)
+![スクリーンショット 2023-05-29 165155](https://github.com/yk-kc/furny_app/assets/124197100/0f1ab5fa-e415-4495-b8f9-f4723559bd5f)
+![スクリーンショット 2023-05-29 165243](https://github.com/yk-kc/furny_app/assets/124197100/e5996fa4-a6a2-490c-8ee9-419c8287dad9)
+
 
 ## サイト概要
 ### サイトテーマ
@@ -24,12 +29,17 @@
  - インテリア家具を何にしようか悩んでいるとき
 
 ## 設計書
+ - ER図  
+https://drive.google.com/file/d/1mbszcrQOMFLxgP5Sz9ORXsjxEcxc3zso/view?usp=sharing
+ - テーブル定義書  
+https://docs.google.com/spreadsheets/d/1Wufw12seR3jCoxCzTzw3K2QUIt6F8-vfU4ke-tEQ2EA/edit?usp=sharing
 
 
 ## 開発環境
-- OS：Windows11
+- OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
+- JSフレームワーク : jQuery
 - CSSフレームワーク：TailwindCSS
 - IDE：Cloud9
 
