@@ -30,12 +30,16 @@
         <div class="text-[13px] sm:text-[17px] space-x-3 xl:space-x-10 mb-[20px]">
           <span>
             <%= link_to user_followings_path(user) do %>
-              <span class="font-bold"><%= user.followings.count %></span> フォロー中
+              <div id="followings_count_<%= user.id %>", class="inline">
+                <span class="font-bold"><%= user.followings.count %></span> フォロー中
+              </div>
             <% end %>
           </span>
           <span>
             <%= link_to user_followers_path(user) do %>
-              <span class="font-bold"><%= user.followers.count %></span> フォロワー
+              <div id="followers_count_<%= user.id %>", class="inline">
+                <span class="font-bold"><%= user.followers.count %></span> フォロワー
+              </div>
             <% end %>
           </span>
           <span>
