@@ -1,4 +1,5 @@
 class PostCommentsController < ApplicationController
+  before_action :ensure_user, only: [:destroy]
 
   def create
     @post = Post.find(params[:post_id])
@@ -18,6 +19,13 @@ class PostCommentsController < ApplicationController
 
   def post_comment_params
     params.require(:post_comment).permit(:comment)
+  end
+
+  def ensure_user
+    # current_userの全コメントの中に送られてきたコメントidがあるまたはcurrent_userがadminの場合
+    @post_comments = current_user.post_comments
+    @post_comment = @post_comments.find_by(id: params[:id]) || ( current_user.admin == true )
+    redirect_to posts_path unless @post_comment
   end
 
 end
