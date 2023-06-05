@@ -19,7 +19,7 @@
     <div class='mb-5'>
       <%= f.label :tag, "カラー", class: "font-semibold inline-block p-1" %>
       <span> (複数チェック可)</span>
-      <div class="flex flex-wrap w-[315px]">
+      <div class="flex flex-wrap w-[315px]  mx-auto">
         <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, include_hidden: false do |tag| %>
         <!--第一引数 :tag_idsはpostオブジェクトのプロパティ名-->
         <!--第二引数 Tag.allはtagオブジェクトの配列を取得-->
