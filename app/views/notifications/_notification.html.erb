@@ -14,11 +14,11 @@
       <% when 'follow' then %>
         <%= "あなたをフォローしました" %>
       <% when 'like' then %>
-        <%= link_to 'あなたの投稿', notification.post, remote: true, style: "font-bold" %>
+        <%= link_to 'あなたの投稿', notification.post, remote: true, class: "font-bold" %>
         <%= "にいいねしました" %>
       <% when 'comment' then %>
         <% if notification.post.user_id == visited.id %>
-          <%= link_to "あなたの投稿", notification.post, remote: true, style: "font-bold" %>
+          <%= link_to "あなたの投稿", notification.post, remote: true, class: "font-bold" %>
         <% else %>
           <span>
             <%= link_to post_path(notification.post), remote: true do %>
