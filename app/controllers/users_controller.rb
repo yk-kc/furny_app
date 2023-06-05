@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.page(params[:page]).per(12)
+    @users_count = User.all
   end
 
   def show

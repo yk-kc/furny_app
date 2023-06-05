@@ -31,11 +31,13 @@
                 </tr>
                 <% sum += 1 %>
               <% end %>
-              <p><%= paginate @users %></p>
-              <p class="text-center">登録者合計：<%= sum %></p>
           <% end %>
         <% end %>
+        <p class="text-center">登録者合計：<%= @users_count.count %></p>
       </tbody>
     </table>
+  </div>
+  <div class="text-center mt-[64px]">
+    <%= paginate @users %>
   </div>
 </div>
